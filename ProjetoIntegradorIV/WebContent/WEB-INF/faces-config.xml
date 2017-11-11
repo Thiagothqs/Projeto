@@ -33,6 +33,15 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>showEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novaMensagemEMPREGADO</from-outcome>
+			<to-view-id>novaMensagemEMPREGADO.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>newEmpregado.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>index</from-outcome>
@@ -40,5 +49,50 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>indexEMPREGADOR.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>showEMPREGADO</from-outcome>
+			<to-view-id>showEMPREGADO.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>indexEMPREGADOR.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novaMensagemEMPREGADO</from-outcome>
+			<to-view-id>novaMensagemEMPREGADO.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>	
+		<from-view-id>showEMPREGADO.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>indexEMPREGADOR</from-outcome>
+			<to-view-id>indexEMPREGADOR.xhtml</to-view-id>
+			<redirect/>		
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>novaMensagemEMPREGADO.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>indexEMPREGADOR</from-outcome>
+			<to-view-id>indexEMPREGADOR.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>	
+		<from-view-id>showMsgEMPREGADO</from-view-id>
+		<navigation-case>
+			<from-outcome>listamensagemEMPREGADO</from-outcome>
+			<to-view-id>listamensagemEMPREGADO.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

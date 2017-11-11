@@ -33,9 +33,7 @@
 		<hr/>
 		<f:view>
 			<h:form>
-			
-
-							<div class="form-group">
+				<div class="form-group">
 					<h:outputLabel value="Nome:"/>
 					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.nome}"/>
 				</div>
@@ -43,7 +41,6 @@
 				<div class="form-group">
 					<h:outputLabel value="Data de nascimento:"/>
 					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.data_nascimento}"/>
-					
 				</div>
 
 
@@ -86,91 +83,97 @@
 					<h:outputLabel value="Endereço:"/>
 					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.endereco_rua}"/>
 					
-				</div>
-				
-					
-				
+				</div>				
 					<div class="form-group">
 					<h:outputLabel value="Número Endereço:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.endereco_numero}"/>
-					
+					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.endereco_numero}"/>	
 				</div>
 
-
- 			
-				
-					<div class="form-group">
+				<div class="form-group">
 					<h:outputLabel value="Complemento:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.complemento}"/>
-					
+					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.complemento}"/>					
 				</div>
-				
-				
 				
 				<div class="form-group">
 					<h:outputLabel value="Bairro:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.bairro}"/>
-					
-				</div>
-				
-				
-								<div class="form-group">
-					<h:outputLabel value="Cidade:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.cidade}"/>
-					
+					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.bairro}"/>	
 				</div>
 				
 				
 				<div class="form-group">
+					<h:outputLabel value="Cidade:"/>
+					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.cidade}"/>	
+				</div>
+				
+				<div class="form-group">
 					<h:outputLabel value="Estado:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.estado}"/>
-					
+					<h:selectOneMenu styleClass="form-control" value="#{empregadoManagedBean.empregado.estado}">
+						<f:selectItem itemValue="AC" itemLabel="AC"/>
+						<f:selectItem itemValue="AL" itemLabel="AL"/>
+						<f:selectItem itemValue="AM" itemLabel="AM"/>
+						<f:selectItem itemValue="AP" itemLabel="AP"/>
+						<f:selectItem itemValue="BA" itemLabel="BA"/>
+						<f:selectItem itemValue="CE" itemLabel="CE"/>
+						<f:selectItem itemValue="DF" itemLabel="DF"/>
+						<f:selectItem itemValue="ES" itemLabel="ES"/>
+						<f:selectItem itemValue="GO" itemLabel="GO"/>
+						<f:selectItem itemValue="MA" itemLabel="MA"/>
+						<f:selectItem itemValue="MG" itemLabel="MG"/>
+						<f:selectItem itemValue="MS" itemLabel="MS"/>
+						<f:selectItem itemValue="MT" itemLabel="MT"/>
+						<f:selectItem itemValue="PA" itemLabel="PA"/>
+						<f:selectItem itemValue="PB" itemLabel="PB"/>
+						<f:selectItem itemValue="PE" itemLabel="PE"/>
+						<f:selectItem itemValue="PI" itemLabel="PI"/>
+						<f:selectItem itemValue="PR" itemLabel="PR"/>
+						<f:selectItem itemValue="RJ" itemLabel="RJ"/>
+						<f:selectItem itemValue="RN" itemLabel="RN"/>
+						<f:selectItem itemValue="RO" itemLabel="RO"/>
+						<f:selectItem itemValue="RR" itemLabel="RR"/>
+						<f:selectItem itemValue="RS" itemLabel="RS"/>
+						<f:selectItem itemValue="SC" itemLabel="SC"/>
+						<f:selectItem itemValue="SE" itemLabel="SE"/>
+						<f:selectItem itemValue="SP" itemLabel="SP"/>
+						<f:selectItem itemValue="TO" itemLabel="TO"/>
+					</h:selectOneMenu>
 				</div>
 
 
 			<div class="form-group">
-					<h:outputLabel value="Email:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.email}"/>
-					
-				</div>
+				<h:outputLabel value="Email:"/>
+				<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.email}"/>		
+			</div>
 				
 				
-						<div class="form-group">
-					<h:outputLabel value="Senha:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.senha}"/>
-					
-				</div>
+			<div class="form-group">
+				<h:outputLabel value="Senha:"/>
+				<h:inputSecret styleClass="form-control" value="#{empregadoManagedBean.empregado.senha}"/>					
+			</div>
 				
-						<div class="form-group">
+			<div class="form-group">
 				<h:outputLabel value="Status:"/>
-				<h:selectOneMenu id="status" value="#{empregadoManagedBean.empregado.status.id}" styleClass="form-control">
+				<h:selectOneMenu id="statusid" value="#{empregadoManagedBean.empregado.status.id}" styleClass="form-control">
 					<f:selectItems value="#{statusManagedBean.listStatus}" var="status" itemValue="#{status.id}" itemLabel="#{status.description}"/>
 				</h:selectOneMenu>
 			</div>
 				
+			<div class="form-group">
+				<h:outputLabel value="Sexo:"/>
+				<h:selectOneRadio value="#{empregadoManagedBean.empregado.sexo}">
+					<f:selectItem itemValue="M" itemLabel="Masculino" />
+					<f:selectItem itemValue="F" itemLabel="Feminino" />
+				</h:selectOneRadio>
+			</div>
 				
-					<div class="form-group">
-					<h:outputLabel value="Sexo:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.sexo}"/>
-					
-				</div>
-				
-				
-								<div class="form-group">
-					<h:outputLabel value="Descrição:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.descricao}"/>
-					
-				</div>
-			
-	
-			
-			
-			
+			<div class="form-group">
+				<h:outputLabel value="Descrição:"/>
+				<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.descricao}"/>	
+			</div>
+		
 			<div id="actions" class="row">
 				<div class="col-md-12">
-            <h:commandLink value="Voltar" styleClass="btn btn-primary"  action="index?faces-redirect=true"/>
-			      
-			   
+		            <h:commandLink value="Voltar" styleClass="btn btn-primary"  action="indexEMPREGADOR?faces-redirect=true"/>
+		            <h:commandLink value="Enviar Solicitação" styleClass="btn btn-primary" action="novaMensagemEMPREGADO?faces-redirect=true"/>
 			    </div>
 			</div>
 		

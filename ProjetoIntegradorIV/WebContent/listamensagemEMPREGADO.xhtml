@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	   <title>JSF - Customer List</title>
+	   <meta name="description" content=""/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	   <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	   <style>
+	        body {
+	            padding-top: 50px;
+	            padding-bottom: 20px;
+	        }
+	   </style>
+	   <link rel="stylesheet" href="css/style.css"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>     
+    </h:head>
+    
+	<h:body>
+		<ui:include src="/inc/header.xhtml"/>
+			
+		<!-- Conteúdo principal da página -->
+		<main class="container">
+		
+		<div align="center">
+			<h1>Lista de Mensagens</h1>
+		</div>
+		
+		<hr/>
+		<f:view>
+			<h:form styleClass="form-inline">
+			<div id="actions" class="search">
+				<div class="col-md-12"> 	
+				</div>
+			</div>
+			</h:form>
+			
+			<h:form>
+				<h:dataTable styleClass="table table-striped" var="c" value="#{mensagemManagedBean.listMensagem}">  		 
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Email"/>
+						</f:facet>
+				    	<h:outputText value="#{c.email}"/>
+					</h:column>
+ 
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Nome da Empresa"/>
+						</f:facet>
+				    	<h:outputText value="#{c.nomeempresa}"/>
+					</h:column>   
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Vaga"/>
+						</f:facet>
+				    	<h:outputText value="#{c.vaga}"/>
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Hora Entrevista"/>
+						</f:facet>
+				    	<h:outputText value="#{c.horaentrevista}"/>
+					</h:column>
+					
+					 
+	 				<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Resposta"/>
+						</f:facet>
+				    	<h:outputText value="Sim" rendered="#{c.resposta.id==1}"/>
+			    		<h:outputText value="Não" rendered="#{c.resposta.id==2}"/>
+					</h:column>
+					
+			
+					<h:column>
+						<h:commandLink styleClass="btn btn-sm btn-success" value="Visualizar Perfil" action="showMsgEMPREGADO?faces-redirect=true">
+							<f:setPropertyActionListener target="#{mensagemManagedBean.mensagem}" value="#{c}" />
+						</h:commandLink>
+					</h:column>       
+				</h:dataTable>
+
+			</h:form>
+		</f:view>
+		</main>
+		<!-- <ui:include src="/inc/footer.xhtml"/> -->		
+	</h:body>
+</html>

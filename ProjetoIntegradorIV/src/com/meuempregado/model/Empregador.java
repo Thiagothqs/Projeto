@@ -13,8 +13,6 @@ public class Empregador {
 	private String sexo;
 	private String email;
 	private String senha;
-	
-	
 
 	public Empregador(Integer id, String nome, String rg, String cpf, String orgao_emissor, String telefone_celular,
 			String telefone_fixo, String data_nascimento, String sexo, String email, String senha) {
@@ -31,6 +29,11 @@ public class Empregador {
 		this.email = email;
 		this.senha = senha;
 	}
+	
+	public Empregador() {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}

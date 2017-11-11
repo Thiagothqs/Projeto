@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15100071013890" configfile="/ProjetoIntegradorIV/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="75" y="276" id="pf15100903900390" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf15100903900401 pf15100903900402" inlinks="pf15100903900403 pf15100903900404" path="index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showEmpregado.xhtml" x="288" y="192" id="pf15100903900405" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15100903900403 pf151009109123317" inlinks="pf15100903900401" path="showEmpregado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="newEmpregado.xhtml" x="348" y="276" id="pf15100903900406" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf15100903900404" inlinks="pf15100903900402" path="newEmpregado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="indexEMPREGADOR.xhtml" x="37" y="36" id="pf15100903900407" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf15100903900408 pf15100903900409" inlinks="pf151009039004010 pf151009039004011" path="indexEMPREGADOR.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showEMPREGADO.xhtml" x="240" y="48" id="pf151009039004012" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf151009039004010" inlinks="pf15100903900408" path="showEMPREGADO.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="novaMensagemEMPREGADO.xhtml" x="12" y="204" id="pf151009039004013" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf151009039004011" inlinks="pf15100903900409 pf151009109123317" path="novaMensagemEMPREGADO.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showMsgEMPREGADO" x="336" id="pf151009039004014" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf151009039004015" path="showMsgEMPREGADO"/>
+  <nodes xsi:type="pageflow:PFPage" name="listamensagemEMPREGADO.xhtml" x="516" y="24" id="pf151009039004016" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf151009039004015" path="listamensagemEMPREGADO.xhtml"/>
+  <links id="pf15100903900401" target="pf15100903900405" source="pf15100903900390" outcome="showEmpregado" redirect="true"/>
+  <links id="pf15100903900402" target="pf15100903900406" source="pf15100903900390" outcome="newEmpregado" redirect="true"/>
+  <links id="pf15100903900403" target="pf15100903900390" source="pf15100903900405" outcome="index" redirect="true"/>
+  <links id="pf15100903900404" target="pf15100903900390" source="pf15100903900406" outcome="index" redirect="true"/>
+  <links id="pf15100903900408" target="pf151009039004012" source="pf15100903900407" outcome="showEMPREGADO" redirect="true"/>
+  <links id="pf15100903900409" target="pf151009039004013" source="pf15100903900407" outcome="novaMensagemEMPREGADO" redirect="true"/>
+  <links id="pf151009039004010" target="pf15100903900407" source="pf151009039004012" outcome="indexEMPREGADOR" redirect="true"/>
+  <links id="pf151009039004011" target="pf15100903900407" source="pf151009039004013" outcome="indexEMPREGADOR" redirect="true"/>
+  <links id="pf151009039004015" target="pf151009039004016" source="pf151009039004014" outcome="listamensagemEMPREGADO" redirect="true"/>
+  <links id="pf151009109123317" target="pf151009039004013" source="pf15100903900405" outcome="novaMensagemEMPREGADO" redirect="true"/>
+</pageflow:Pageflow>

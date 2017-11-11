@@ -8,7 +8,6 @@ import java.util.List;
 import com.meuempregado.dao.EmpregadoDAO;
 import com.meuempregado.model.Empregado;
 
-
 public class EmpregadoService {
 	
 	EmpregadoDAO dao=new EmpregadoDAO();
@@ -19,6 +18,14 @@ public class EmpregadoService {
 		list = dao.listAll();
 		
 		return list;
+	}
+	
+	public void alterar (Empregado empregado) {
+		try {
+			dao.updateEmpregado(empregado);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Empregado> findEmpregadoByCidade(String cidade, String estado) throws SQLException, ClassNotFoundException, IOException{
@@ -42,7 +49,7 @@ public class EmpregadoService {
 	
 	public void salvar(Empregado empregado){
 		try {
-			dao.salvar(empregado);
+			dao.insertEmpregado(empregado);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

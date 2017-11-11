@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	   <title>JSF - Customer List</title>
+	   <meta name="description" content=""/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	   <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	   <style>
+	        body {
+	            padding-top: 50px;
+	            padding-bottom: 20px;
+	        }
+	   </style>
+	   <link rel="stylesheet" href="css/style.css"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>     
+    </h:head>
+	<h:body>
+		<ui:include src="/inc/header.xhtml"/>
+	
+		<!-- Conteúdo principal da página -->
+		<main class="container">
+		<div align="center">
+			<h1>Detalhes</h1>
+		</div>
+		
+		<hr/>
+		<f:view>
+			<h:form>
+			
+				<div class="form-group">
+					<h:outputLabel value="Nome Empresa:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.nomeempresa}"/>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Email:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.email}"/>	
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Endereço:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.endereco}"/>
+					
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Vaga:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.vaga}"/>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Data Entrevista:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.data}"/>		
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Hora Entrevista:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.horaentrevista}"/>
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Mensagem:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.msg}"/>					
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Salario:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.salario}" disabled="true"/>				
+				</div>
+				
+				<div class="form-group">
+					<h:outputLabel value="Beneficios:"/>
+					<h:inputText styleClass="form-control" value="#{mensagemManagedBean.mensagem.beneficios}" disabled="true"/>				
+				</div>
+			
+       			<div class="form-group">
+					<h:outputLabel value="Resposta:"/>
+					<h:selectOneMenu id="respostas" value="#{mensagemManagedBean.mensagem.resposta.id}" styleClass="form-control">
+						<f:selectItems value="#{respostaManagedBean.listResposta}" var="resposta" itemValue="#{resposta.id}" itemLabel="#{resposta.description}"/>
+					</h:selectOneMenu>
+				</div>	
+			
+				<div id="actions" class="row">
+					<div class="col-md-12">
+						<h:commandLink styleClass="btn btn-primary" value="Salvar" action="#{mensagemManagedBean.updateMensagemAction}"/>
+			            <h:commandLink value="Voltar" styleClass="btn btn-primary"  action="listamensagemEMPREGADO?faces-redirect=true"/>
+				    </div>
+				</div>
+			
+			</h:form>			
+			</f:view>
+		</main>
+		<ui:include src="/inc/footer.xhtml"/>
+	</h:body>
+</html>

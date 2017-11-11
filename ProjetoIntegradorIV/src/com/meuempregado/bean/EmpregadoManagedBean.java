@@ -14,7 +14,6 @@ import com.meuempregado.service.EmpregadoService;
 
 @ManagedBean(name="empregadoManagedBean")
 @SessionScoped
-
 public class EmpregadoManagedBean implements Serializable {
 	private static final long serialVersionUID = 2556017393983871728L;
 	
@@ -50,31 +49,23 @@ public class EmpregadoManagedBean implements Serializable {
 		return "index";
 	}
 	
-	
-	//////////////////////////////////////////
+	public String updateEmpregadoAction(){
+		System.out.println("DEU BOA");
+		serviceempregado.alterar(empregado);
+		try {
+			this.listEmpregado = serviceempregado.listAll();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "index";
+	}
 	
 	/*
 	
 	public String searchByNameAction() throws SQLException, ClassNotFoundException, IOException{
 		System.out.println("Searching...");
 		this.listCustomer = service.findCustomerByName(customer.getName());
-		
-		return "index";
-	}
-	
-	public String insertCustomerAction() throws SQLException, ClassNotFoundException, IOException{
-		System.out.println("Saving...");
-		service.insertCustomer(customer);
-		
-		this.listCustomer = service.listAll();
-		
-		return "index";
-	}
-	
-	public String updateCustomerAction() throws SQLException, ClassNotFoundException, IOException{
-		System.out.println("Updating...");
-		service.updateCustomer(customer);
-		this.listCustomer = service.listAll();
 		
 		return "index";
 	}
@@ -87,10 +78,8 @@ public class EmpregadoManagedBean implements Serializable {
 		return "index";
 	}
 	
-
 	*/
 	
-	/////////////////////////////////////////////
 	public Empregado getEmpregado() {
 		return empregado;
 	}

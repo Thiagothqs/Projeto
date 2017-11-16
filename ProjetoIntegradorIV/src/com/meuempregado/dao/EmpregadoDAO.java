@@ -11,7 +11,6 @@ import java.util.List;
 import com.meuempregado.model.Empregado;
 import com.meuempregado.model.Status;
 
-
 public class EmpregadoDAO extends GenericDAO{
 	
 	PreparedStatement ps;	
@@ -22,11 +21,6 @@ public class EmpregadoDAO extends GenericDAO{
 	private String SALVAR_EMPREGADO = "insert into tb_empregado values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private String PROCURAR_ESTADO_CIDADE = "select * from tb_empregado inner join tb_status on tb_empregado.statusId=tb_status.id WHERE estado like ? and cidade like ?";
 	private String ALTERAR_EMPREGADO = "update tb_empregado set nome = ?, data_nascimento = ?, cpf = ?, rg = ?, telefone_fixo = ?, telefone_celular = ?, cep = ?, endereco_rua = ?, endereco_numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, email = ?, senha = ?, statusId = ?, sexo = ?, descricao = ?, ativo = ? where id = ?;";
-	
-	/* private String PROCURAR_NOME = "SELECT cs.id, cs.nome, cs.data_nascimento,cs.cpf,cs.rg"
-			+ ",cs.telefone_fixo,cs.telefone_celular,cs.cep,cs.endereco_rua,cs.endereco_numero,cs.complemento"
-			+ ",cs.bairro,cs.cidade,cs.estado,cs.email,cs.senha,cs.sexo,cs.descricao,ct.id,ct.description FROM tb_empregado cs"
-			+ ",tb_status ct WHERE cs.cidade LIKE ? AND cs.idstatus= ct.id";*/
 	
 	public List<Empregado> listAll() throws SQLException, ClassNotFoundException, IOException{
 		List<Empregado> lista = new ArrayList<Empregado>();
@@ -48,7 +42,7 @@ public class EmpregadoDAO extends GenericDAO{
 						rs.getString("complemento"),rs.getString("bairro"),rs.getString("cidade"),rs.getString("estado"),
 						rs.getString("email"),rs.getString("senha"),status,rs.getString("sexo"),rs.getString("descricao"));
 				
-					lista.add(c);
+				lista.add(c);
 			}
 		}
 		

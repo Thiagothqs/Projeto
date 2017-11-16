@@ -13,13 +13,16 @@ public class Mensagem {
 	private String data;
 	private Float salario;
 	private String beneficios;
+	
+	private int idEmpregado;
+	private int idEmpregador;
 
 	public Mensagem(){
 		
 	}
 	
 	public Mensagem(int id, String nomeempresa, String email, String msg, Resposta resposta, String endereco,
-			String vaga, String horaentrevista,String data, Float salario, String beneficios) {
+			String vaga, String horaentrevista,String data, Float salario, String beneficios, int idEmpregado, int idEmpregador) {
 		super();
 		this.id = id;
 		this.nomeempresa = nomeempresa;
@@ -32,6 +35,8 @@ public class Mensagem {
 		this.data=data;
 		this.salario = salario;
 		this.beneficios = beneficios;
+		this.idEmpregado = idEmpregado;
+		this.idEmpregador = idEmpregador;
 	}
 	
 	public int getId() {
@@ -99,6 +104,22 @@ public class Mensagem {
 	}
 	public void setBeneficios(String beneficios) {
 		this.beneficios = beneficios;
+	}
+
+	public int getIdEmpregado() {
+		return idEmpregado;
+	}
+
+	public void setIdEmpregado(int idEmpregado) {
+		this.idEmpregado = idEmpregado;
+	}
+
+	public int getIdEmpregador() {
+		return idEmpregador;
+	}
+
+	public void setIdEmpregador(int idEmpregador) {
+		this.idEmpregador = idEmpregador;
 	}
 
 }

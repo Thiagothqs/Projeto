@@ -72,6 +72,7 @@
 					<h:inputText id="searchCidade" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoManagedBean.empregado.cidade}"/>
 					<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{empregadoManagedBean.searchByCidadeAction}"/>
 					<h:commandButton styleClass="btn btn-primary" value="Listar Tudo" action="#{empregadoManagedBean.ListarTudo}"/>
+					<h:commandButton styleClass="btn btn-primary" value="Visualizar Mensagens" action="listamensagemEMPREGADO?faces-redirect=true"/>
 				</div>
 			</div>
 			
@@ -110,21 +111,11 @@
 						</f:facet>
 				    	<h:outputText value="#{c.descricao}"/>
 					</h:column>
-							
-					<!-- 
-					
-					<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Category"/>
-						</f:facet>
-				    	<h:outputText value="#{c.category.description}"/>
-					</h:column>
-					
-					 -->
 					
 					<h:column>
 						<h:commandLink styleClass="btn btn-sm btn-success" value="Visualizar Perfil" action="showEmpregado?faces-redirect=true">
 							<f:setPropertyActionListener target="#{empregadoManagedBean.empregado}" value="#{c}" />
+							<f:setPropertyActionListener target="#{mensagemManagedBean.empregado}" value="#{c}" />
 						</h:commandLink>
 					</h:column>
 					       

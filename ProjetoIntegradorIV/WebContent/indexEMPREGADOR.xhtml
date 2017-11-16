@@ -31,38 +31,24 @@
 			
 		<!-- Conteúdo principal da página -->
 		<main class="container">
-		
+		<div align="center">
+			<h1>Empregados Contratados</h1>
+		</div>
 	
-			<div align="center">
-
-	<h1>Pessoas Disponíveis</h1>
-</div>
-	
-		
 		<hr/>
 		<f:view>
 			<h:form styleClass="form-inline">
 			<div id="actions" class="search">
 				<div class="col-md-12">
-					<h:outputLabel for="searchName" value="Cidade:"/>
-					
-					 <h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoManagedBean.empregado.cidade}"/> 
-					
-
-					
-					<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{empregadoManagedBean.searchByCidadeAction}"/>
-				
-				<h:commandButton styleClass="btn btn-primary" value="Listar Tudo" action="#{empregadoManagedBean.ListarTudo}"/>
-				
+					<h:outputLabel for="searchName" value="Nome do Funcionário:"/>
+					<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoManagedBean.empregado.cidade}"/>
+					<h:commandButton styleClass="btn btn-primary" value="Listar Tudo" action="#{empregadoManagedBean.ListarTudo}"/>
 				</div>
 			</div>
 			</h:form>
 			
-			
-			
-			
 			<h:form>
-				<h:dataTable styleClass="table table-striped" var="c" value="#{empregadoManagedBean.listEmpregado}">
+				<h:dataTable styleClass="table table-striped" var="c" value="#{listarempregadosManagedBean.listaEmpregados}">
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Id"/>
@@ -82,57 +68,31 @@
 				    	<h:outputText value="#{c.email}"/>
 					</h:column>
 					
-							<h:column>
+					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Cidade"/>
 						</f:facet>
 				    	<h:outputText value="#{c.cidade}"/>
 					</h:column>
-					
-					
-								<h:column>
+									
+					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Descricao"/>
 						</f:facet>
 				    	<h:outputText value="#{c.descricao}"/>
 					</h:column>
-					
-					
-					
-					<!-- 
-					
-							<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Category"/>
-						</f:facet>
-				    	<h:outputText value="#{c.category.description}"/>
-					</h:column>
-					
-					 -->
-					
 			
 					<h:column>
 						<h:commandLink styleClass="btn btn-sm btn-success" value="Visualizar Perfil" action="showEMPREGADO?faces-redirect=true">
 							<f:setPropertyActionListener target="#{empregadoManagedBean.empregado}" value="#{c}" />
 						</h:commandLink>
-
-					</h:column>       
+						<h:commandLink styleClass="btn btn-sm btn-danger" value="Demitir" action="showEmpregado?faces-redirect=true">
+							<f:setPropertyActionListener target="#{empregadoManagedBean.empregado}" value="#{c}" />
+						</h:commandLink>
+					</h:column>
 				</h:dataTable>
-				
-				
-
-				
-				
-				
-				
 			</h:form>
 		</f:view>
 		</main>
-		<!-- <ui:include src="/inc/footer.xhtml"/> -->		
 	</h:body>
-	
-	
-	
-	
-	
 </html>

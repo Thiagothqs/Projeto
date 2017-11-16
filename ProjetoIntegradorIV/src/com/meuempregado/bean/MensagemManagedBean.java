@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.meuempregado.model.Empregado;
 import com.meuempregado.model.Mensagem;
 import com.meuempregado.model.Resposta;
 import com.meuempregado.service.MensagemService;
@@ -20,16 +21,19 @@ public class MensagemManagedBean {
 	private MensagemService service;
 	private Resposta resposta;
 	
+	private Empregado empregado;
+	
 	public MensagemManagedBean() throws ClassNotFoundException, SQLException, IOException{	
 		service = new MensagemService();
 		resposta = new Resposta(0, "");
-		Mensagem = new Mensagem(0,"", "", "",resposta,"","","","", 0f ,"");
+		Mensagem = new Mensagem(0,"", "", "",resposta,"","","","", 0f ,"", 0, 0);
 		listMensagem = service.listAll();
 	}
 	
 	///////////////////////////insert
 	public String insertMensagemAction() throws SQLException, ClassNotFoundException, IOException{
 		System.out.println("Saving...");
+		Mensagem.setIdEmpregado(empregado.getId());
 		service.insertMensagem(Mensagem);	
 		this.listMensagem = service.listAll();
 		
@@ -77,6 +81,14 @@ public class MensagemManagedBean {
 
 	public void setResposta(Resposta Resposta) {
 		this.resposta = Resposta;
+	}
+
+	public Empregado getEmpregado() {
+		return empregado;
+	}
+
+	public void setEmpregado(Empregado empregado) {
+		this.empregado = empregado;
 	}
 
 }

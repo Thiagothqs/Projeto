@@ -15,17 +15,24 @@ public class LoginService {
 	EmpregadoDAO daoEmpregado = new EmpregadoDAO();
 	EmpregadorDAO daoEmpregador = new EmpregadorDAO();
 	
+	private static int idEmpregadologin;
+	private static int idEmpregadorlogin;
+	
 	String retorno = "";
 	
-	public String login(String email, String senha, Empregado empregado, Empregador empregador) throws ClassNotFoundException, SQLException, IOException {
+	public String login(String email, String senha) throws ClassNotFoundException, SQLException, IOException {
 		List<Empregado> listaEmpregado = daoEmpregado.listAll();
 		List<Empregador> listaEmpregador = daoEmpregador.listAll();
 		
 		for(int i=0;i<listaEmpregado.size();i++) {
 			if(email.equals(listaEmpregado.get(i).getEmail())) {
 				if(senha.equals(listaEmpregado.get(i).getSenha())) {
-					dao.loginEmpregado(empregado);
-					retorno = "index.xhtml";
+					setIdEmpregadologin(listaEmpregado.get(i).getId());//this.idEmpregadologin = listaEmpregado.get(i).getId();
+					dao.loginEmpregado(email, senha);//empregado
+					
+					System.out.println(getIdEmpregadologin()+" = ID EMPREGADO -> EU TO AQUI NO LOGIN SERVICE");//this.idEmpregadologin+"EU TO AQUI"
+					
+					retorno = "listamensagemEMPREGADO.xhtml";//"index.xhtml";
 				}
 			}
 		}
@@ -33,7 +40,11 @@ public class LoginService {
 		for(int i=0;i<listaEmpregador.size();i++) {
 			if(email.equals(listaEmpregador.get(i).getEmail())) {
 				if(senha.equals(listaEmpregador.get(i).getSenha())) {
-					dao.loginEmpregador(empregador);
+					setIdEmpregadorlogin(listaEmpregador.get(i).getId());
+					dao.loginEmpregador(email, senha);
+					
+					System.out.println(getIdEmpregadorlogin()+" = ID EMPREGADOR -> EU TO AQUI NO LOGIN SERVICE");//this.idEmpregadologin+"EU TO AQUI"
+					
 					retorno = "indexEMPREGADOR.xhtml";
 				}
 			}
@@ -41,4 +52,21 @@ public class LoginService {
 		
 		return retorno;
 	}
+
+	public int getIdEmpregadologin() {
+		return idEmpregadologin;
+	}
+
+	public void setIdEmpregadologin(int idEmpregadologin) {
+		LoginService.idEmpregadologin = idEmpregadologin;//this.idEmpregadologin = idEmpregadologin;
+	}
+
+	public int getIdEmpregadorlogin() {
+		return idEmpregadorlogin;
+	}
+
+	public void setIdEmpregadorlogin(int idEmpregadorlogin) {
+		LoginService.idEmpregadorlogin = idEmpregadorlogin;//this.idEmpregadorlogin = idEmpregadorlogin;
+	}
+	
 }

@@ -13,17 +13,17 @@ import com.meuempregado.model.Status;
 public class LoginDAO extends GenericDAO{
 	PreparedStatement ps;
 	
-	private String LOGAR_EMPREGADO = "SELECT * FROM TB_EMPREGADO WHERE EMAIL = ? AND SENHA = ?";
+	private String LOGAR_EMPREGADO = "SELECT tb_empregado.*, tb_status.id as id_status, tb_status.description FROM TB_EMPREGADO inner join tb_status on tb_empregado.statusId=tb_status.id WHERE EMAIL = ? AND SENHA = ?;";
 	private String LOGAR_EMPREGADOR = "SELECT * FROM TB_EMPREGADOR WHERE EMAIL = ? AND SENHA = ?";
 	
-	public List<Empregado> loginEmpregado(Empregado empregado) throws SQLException {
+	public List<Empregado> loginEmpregado(String email, String senha) throws SQLException {
 		openConnection();
 		
 		List<Empregado> listaEmpregadoLogin = new ArrayList<Empregado>();
 		
 		ps = connect.prepareStatement(LOGAR_EMPREGADO);
-		ps.setString(1, empregado.getEmail());
-		ps.setString(2, empregado.getSenha());
+		ps.setString(1, email);
+		ps.setString(2, senha);
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -41,20 +41,20 @@ public class LoginDAO extends GenericDAO{
 		return listaEmpregadoLogin;
 	}
 	
-	public List<Empregador> loginEmpregador(Empregador empregador) throws SQLException {
+	public List<Empregador> loginEmpregador(String email, String senha) throws SQLException {
 		openConnection();
 		
 		List<Empregador> listaEmpregadorLogin = new ArrayList<Empregador>();
 		
 		ps = connect.prepareStatement(LOGAR_EMPREGADOR);
-		ps.setString(1, empregador.getEmail());
-		ps.setString(2, empregador.getSenha());
+		ps.setString(1, email);
+		ps.setString(2, senha);
 		
 		ResultSet rs =  ps.executeQuery();
 		
 		if(rs != null) {
 			while(rs.next()) {
-				Empregador e = new Empregador(rs.getInt("id"), rs.getString("nome"),  rs.getString("rg"),  rs.getString("cpf"), rs.getString("orgao_emissor"), rs.getString("telefone_celular"), rs.getString("telefone_fixo"), rs.getString("data_nascimento"), rs.getString("sexo"), rs.getString("email"), rs.getString("senha"));
+				Empregador e = new Empregador(rs.getInt("idEmpregador"), rs.getString("nome"),  rs.getString("rg"),  rs.getString("cpf"), rs.getString("orgao_emissor"), rs.getString("telefone_celular"), rs.getString("telefone_fixo"), rs.getString("data_nascimento"), rs.getString("sexo"), rs.getString("email"), rs.getString("senha"));
 				listaEmpregadorLogin.add(e);
 			}
 		}

@@ -29,132 +29,94 @@
 	
 		<!-- Conteúdo principal da página -->
 		<main class="container">
-		<h1>Detalhes</h1>
+		<h1>Detalhes do Empregado</h1>
 		<hr/>
 		<f:view>
 			<h:form>
 				<div class="form-group">
 					<h:outputLabel value="Id"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.id}"/>
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.id}"/>
 				</div>
 				<div class="form-group">
 					<h:outputLabel value="Nome:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.nome}"/>
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.nome}"/>
 				</div>
 				
-				<div class="form-group">
+;				<div class="form-group">
 					<h:outputLabel value="Data de nascimento:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.data_nascimento}"/>
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.data_nascimento}"/>
 				</div>
 
 	             <div class="form-group">
 					<h:outputLabel value="Cpf:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.cpf}"/>	
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.cpf}"/>	
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel value="Rg:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.rg}"/>	
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.rg}"/>	
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel value="Telefone fixo:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.telefone_fixo}"/>		
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.telefone_fixo}"/>		
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel value="Telefone Celular:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.telefone_celular}"/>		
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.telefone_celular}"/>		
 				</div>
 			
 				<div class="form-group">
 					<h:outputLabel value="Cep:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.cep}"/>			
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.cep}"/>			
 				</div>
 				
 					<div class="form-group">
 					<h:outputLabel value="Endereço:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.endereco_rua}"/>
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.endereco_rua}"/>
 					
 				</div>				
 					<div class="form-group">
 					<h:outputLabel value="Número Endereço:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.endereco_numero}"/>	
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.endereco_numero}"/>	
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel value="Complemento:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.complemento}"/>					
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.complemento}"/>					
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel value="Bairro:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.bairro}"/>	
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.bairro}"/>	
 				</div>
 				
 				
 				<div class="form-group">
 					<h:outputLabel value="Cidade:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.cidade}"/>	
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.cidade}"/>	
 				</div>
 				
 				<div class="form-group">
 					<h:outputLabel value="Estado:"/>
-					<h:selectOneMenu styleClass="form-control" value="#{empregadoManagedBean.empregado.estado}">
-						<f:selectItem itemValue="AC" itemLabel="AC"/>
-						<f:selectItem itemValue="AL" itemLabel="AL"/>
-						<f:selectItem itemValue="AM" itemLabel="AM"/>
-						<f:selectItem itemValue="AP" itemLabel="AP"/>
-						<f:selectItem itemValue="BA" itemLabel="BA"/>
-						<f:selectItem itemValue="CE" itemLabel="CE"/>
-						<f:selectItem itemValue="DF" itemLabel="DF"/>
-						<f:selectItem itemValue="ES" itemLabel="ES"/>
-						<f:selectItem itemValue="GO" itemLabel="GO"/>
-						<f:selectItem itemValue="MA" itemLabel="MA"/>
-						<f:selectItem itemValue="MG" itemLabel="MG"/>
-						<f:selectItem itemValue="MS" itemLabel="MS"/>
-						<f:selectItem itemValue="MT" itemLabel="MT"/>
-						<f:selectItem itemValue="PA" itemLabel="PA"/>
-						<f:selectItem itemValue="PB" itemLabel="PB"/>
-						<f:selectItem itemValue="PE" itemLabel="PE"/>
-						<f:selectItem itemValue="PI" itemLabel="PI"/>
-						<f:selectItem itemValue="PR" itemLabel="PR"/>
-						<f:selectItem itemValue="RJ" itemLabel="RJ"/>
-						<f:selectItem itemValue="RN" itemLabel="RN"/>
-						<f:selectItem itemValue="RO" itemLabel="RO"/>
-						<f:selectItem itemValue="RR" itemLabel="RR"/>
-						<f:selectItem itemValue="RS" itemLabel="RS"/>
-						<f:selectItem itemValue="SC" itemLabel="SC"/>
-						<f:selectItem itemValue="SE" itemLabel="SE"/>
-						<f:selectItem itemValue="SP" itemLabel="SP"/>
-						<f:selectItem itemValue="TO" itemLabel="TO"/>
-					</h:selectOneMenu>
+					<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.estado}"/>	
 				</div>
 
 
 			<div class="form-group">
 				<h:outputLabel value="Email:"/>
-				<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.email}"/>		
-			</div>
-			
-			<div class="form-group">
-				<h:outputLabel value="Status:"/>
-				<h:selectOneMenu id="statusid" value="#{empregadoManagedBean.empregado.status.id}" styleClass="form-control">
-					<f:selectItems value="#{statusManagedBean.listStatus}" var="status" itemValue="#{status.id}" itemLabel="#{status.description}"/>
-				</h:selectOneMenu>
+				<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.email}"/>		
 			</div>
 				
 			<div class="form-group">
 				<h:outputLabel value="Sexo:"/>
-				<h:selectOneRadio value="#{empregadoManagedBean.empregado.sexo}">
-					<f:selectItem itemValue="M" itemLabel="Masculino" />
-					<f:selectItem itemValue="F" itemLabel="Feminino" />
-				</h:selectOneRadio>
+				<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.sexo}"/>
 			</div>
 				
 			<div class="form-group">
 				<h:outputLabel value="Descrição:"/>
-				<h:inputText styleClass="form-control" value="#{empregadoManagedBean.empregado.descricao}"/>	
+				<h:inputText styleClass="form-control" readonly="true" value="#{empregadoManagedBean.empregado.descricao}"/>	
 			</div>
 		
 			<div id="actions" class="row">

@@ -6,13 +6,12 @@ import java.util.List;
 
 import com.meuempregado.dao.ListarEmpregadosDAO;
 import com.meuempregado.model.Empregado;
-import com.meuempregado.model.Empregador;
 
 public class ListarEmpregadosService {
 	LoginService serviceLogin = new LoginService();
 	ListarEmpregadosDAO dao = new ListarEmpregadosDAO();
 	
-	public void contratar(Empregado empregado, Empregador empregador) {
+	public void contratar() {//Empregado empregado, Empregador empregador
 		try {
 			dao.contratar();//empregado, empregador
 		} catch (SQLException e) {

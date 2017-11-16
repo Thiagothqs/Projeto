@@ -31,7 +31,7 @@ public class ListarEmpregadosManagedBean implements Serializable {
 	}
 	
 	public String contratar() {
-		service.contratar(empregado, empregador);
+		service.contratar();//empregado, empregador
 		return "index";
 	}
 	

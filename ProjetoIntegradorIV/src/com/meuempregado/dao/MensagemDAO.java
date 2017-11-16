@@ -18,7 +18,7 @@ public class MensagemDAO extends GenericDAO{
 	private String INSERT_MENSAGEM = "INSERT INTO tb_mensagem(nomeempresa,email,msg,idresposta,endereco,vaga,horaentrevista,data,salario,beneficios, idEmpregador, idEmpregado) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 	private String LISTAR_MENSAGEM = "select tb_mensagem.*, tb_resposta.idResposta, tb_resposta.description from tb_mensagem inner join tb_resposta on tb_mensagem.idresposta = tb_resposta.idResposta;";// where idEmpregado=?;
 	private String EXCLUIR = "DELETE FROM  tb_mensagem WHERE IDMENSAGEM=?;";
-	private String ALTERAR = "UPDATE tb_mensagem SET nomeempresa= ?, email= ?, msg = ?,idresposta=?,endereco=?,vaga=?,horaentrevista=?,data=?,salario=?,beneficios=? idEmpregador=?, idEmpregado=? WHERE idMensagem=?;";
+	private String ALTERAR = "UPDATE tb_mensagem SET nomeempresa= ?, email= ?, msg = ?,idresposta=?,endereco=?,vaga=?,horaentrevista=?,data=?,salario=?,beneficios=?, idEmpregador=?, idEmpregado=? WHERE idMensagem=?;";
 	
 	public void salvar(Mensagem c) throws SQLException, ClassNotFoundException, IOException {
 		openConnection();

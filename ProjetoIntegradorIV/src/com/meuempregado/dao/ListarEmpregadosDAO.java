@@ -15,7 +15,9 @@ public class ListarEmpregadosDAO extends GenericDAO {
 	LoginService service = new LoginService();
 	
 	private String CONTRATAR_EMPREGADO = "insert into tb_contratarfuncionario values(?, ?);";
-	private String LISTAR_EMPREGADOS= "select tb_empregado.*, tb_empregador.idEmpregador from tb_empregado inner join tb_contratarfuncionario on tb_empregado.id=tb_contratarfuncionario.idEmpregado inner join tb_empregador on tb_contratarfuncionario.idEmpregador=tb_empregador.idEmpregador where tb_empregador.idEmpregador = ?;";
+	//private String LISTAR_EMPREGADOS= "select tb_empregado.*, tb_empregador.idEmpregador from tb_empregado inner join tb_contratarfuncionario on tb_empregado.id=tb_contratarfuncionario.idEmpregado inner join tb_empregador on tb_contratarfuncionario.idEmpregador=tb_empregador.idEmpregador where tb_empregador.idEmpregador = ?;";
+	
+	private String LISTAR_EMPREGADOS = "select tb_empregado.*, tb_status.id as id_status, tb_status.description, tb_empregador.idEmpregador from tb_empregado inner join tb_status on tb_empregado.statusId=tb_status.id inner join tb_mensagem on tb_empregado.id=tb_mensagem.idEmpregado inner join tb_empregador on tb_mensagem.idEmpregador=tb_empregador.idEmpregador where tb_empregador.idEmpregador = ?;";
 	
 	public void contratar() throws SQLException {//Empregado empregado, Empregador empregador
 		openConnection();

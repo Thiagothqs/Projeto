@@ -15,8 +15,8 @@ public class LoginService {
 	EmpregadoDAO daoEmpregado = new EmpregadoDAO();
 	EmpregadorDAO daoEmpregador = new EmpregadorDAO();
 	
-	private static int idEmpregadologin;
-	private static int idEmpregadorlogin;
+	private static Integer idEmpregadologin;
+	private static Integer idEmpregadorlogin;
 	
 	String retorno = "";
 	
@@ -53,19 +53,19 @@ public class LoginService {
 		return retorno;
 	}
 
-	public int getIdEmpregadologin() {
+	public Integer getIdEmpregadologin() {//int
 		return idEmpregadologin;
 	}
 
-	public void setIdEmpregadologin(int idEmpregadologin) {
+	public void setIdEmpregadologin(Integer idEmpregadologin) {//int
 		LoginService.idEmpregadologin = idEmpregadologin;//this.idEmpregadologin = idEmpregadologin;
 	}
 
-	public int getIdEmpregadorlogin() {
+	public Integer getIdEmpregadorlogin() {//int
 		return idEmpregadorlogin;
 	}
 
-	public void setIdEmpregadorlogin(int idEmpregadorlogin) {
+	public void setIdEmpregadorlogin(Integer idEmpregadorlogin) {//int
 		LoginService.idEmpregadorlogin = idEmpregadorlogin;//this.idEmpregadorlogin = idEmpregadorlogin;
 	}
 	

@@ -1,80 +1,51 @@
 package com.meuempregado.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import com.meuempregado.model.Empregador;
 
-public class EmpregadorDAO extends GenericDAO{
-	PreparedStatement ps;
+public class EmpregadorDAO {
+	EntityManagerFactory emf = Conexao.getInstance();
 	
-	private String SALVAR_EMPREGADO = "insert into tb_empregador values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-	private String ALTERAR_EMPREGADO = "update tb_empregador set nome = ?, rg = ?, cpf = ?, orgao_emissor = ?, telefone_celular = ?, telefone_fixo = ?, data_nascimento = ?, sexo = ?, email = ?, senha = ? where idEmpregador = ?;";
-	private String LISTAR_TODOS = "select * from tb_empregador;";
-	
-	public void insertEmpregador(Empregador empregador) throws SQLException {
-		openConnection();
+	public void insertEmpregador(Empregador empregador) {
+		EntityManager em = emf.createEntityManager();
 		
-		ps = connect.prepareStatement(SALVAR_EMPREGADO);
-		ps.setString(1, empregador.getNome());
-		ps.setString(2, empregador.getRg());
-		ps.setString(3, empregador.getCpf());
-		ps.setString(4, empregador.getOrgao_expedidor());
-		ps.setString(5, empregador.getTelefone_celular());
-		ps.setString(6, empregador.getTelefone_fixo());
-		ps.setString(7, empregador.getData_nascimento());
-		ps.setString(8, empregador.getSexo());
-		ps.setString(9, empregador.getEmail());
-		ps.setString(10, empregador.getSenha());
+		em.getTransaction().begin();
 		
-		ps.execute();
+		em.persist(empregador);
 		
-		closeConnection();
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 	public void updateEmpregador(Empregador empregador) throws SQLException {
-		openConnection();
+		EntityManager em = emf.createEntityManager();
 		
-		ps = connect.prepareStatement(ALTERAR_EMPREGADO);
-		ps.setString(1, empregador.getNome());
-		ps.setString(2, empregador.getRg());
-		ps.setString(3, empregador.getCpf());
-		ps.setString(4, empregador.getOrgao_expedidor());
-		ps.setString(5, empregador.getTelefone_celular());
-		ps.setString(6, empregador.getTelefone_fixo());
-		ps.setString(7, empregador.getData_nascimento());
-		ps.setString(8, empregador.getSexo());
-		ps.setString(9, empregador.getEmail());
-		ps.setString(10, empregador.getSenha());
-		ps.setInt(11, empregador.getId());
+		em.getTransaction().begin();
 		
-		ps.execute();
+		em.merge(empregador);
 		
-		closeConnection();
+		em.getTransaction().commit();
+		em.close();
+
 	}
 	
-	public List<Empregador> listAll() throws SQLException{
-		List<Empregador> listaEmpregador = new ArrayList<Empregador>();
+	public List<Empregador> listAll() {
+		EntityManager em = emf.createEntityManager();
 		
-		openConnection();
+		em.getTransaction().begin();
 		
-		ps = connect.prepareStatement(LISTAR_TODOS);
+		Query q = em.createQuery("FROM Empregador");
 		
-		ResultSet rs = ps.executeQuery();
+		em.getTransaction().commit();
+		//em.close();
 		
-		if(rs != null) {
-			while(rs.next()) {
-				Empregador empregador = new Empregador(rs.getInt("idEmpregador"), rs.getString("nome"), rs.getString("rg"), rs.getString("cpf"), rs.getString("orgao_emissor"), rs.getString("telefone_celular"), rs.getString("telefone_fixo"), rs.getString("data_nascimento"), rs.getString("sexo"), rs.getString("email"), rs.getString("senha"));
-				listaEmpregador.add(empregador);
-			}
-		}
-		
-		closeConnection();
-		
-		return listaEmpregador;
+		return q.getResultList();
 	}
 
 }

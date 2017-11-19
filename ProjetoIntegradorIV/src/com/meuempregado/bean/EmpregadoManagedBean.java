@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.meuempregado.model.Empregado;
-import com.meuempregado.model.Status;
 import com.meuempregado.service.EmpregadoService;
 
 @ManagedBean(name="empregadoManagedBean")
@@ -20,12 +19,10 @@ public class EmpregadoManagedBean implements Serializable {
 	private Empregado empregado;
 	private List<Empregado> listEmpregado;
 	private EmpregadoService serviceempregado;
-	private Status status;
 	
 	public EmpregadoManagedBean() throws ClassNotFoundException, SQLException, IOException{
-		status = new Status(0, "");
 		serviceempregado = new EmpregadoService();
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","",status,"","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
 		listEmpregado = serviceempregado.listAll();
 	}
 	
@@ -95,12 +92,5 @@ public class EmpregadoManagedBean implements Serializable {
 	public void setListEmpregado(List<Empregado> listEmpregado) {
 		this.listEmpregado = listEmpregado;
 	}
-	
-	public Status getStatus() {
-		return status;
-	}
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 }

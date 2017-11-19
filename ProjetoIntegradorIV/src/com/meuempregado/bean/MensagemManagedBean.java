@@ -2,7 +2,11 @@ package com.meuempregado.bean;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,14 +23,15 @@ public class MensagemManagedBean {
 	private Mensagem Mensagem;
 	private List<Mensagem> listMensagem;
 	private MensagemService service;
+	//private Set<Resposta> resposta;
 	private Resposta resposta;
-	
 	private Empregado empregado;
 	
 	public MensagemManagedBean() throws ClassNotFoundException, SQLException, IOException{	
 		service = new MensagemService();
+		//resposta = new HashSet<Resposta>();
 		resposta = new Resposta(0, "");
-		Mensagem = new Mensagem(0,"", "", "",resposta,"","","","", 0f ,"", 0, 0);
+		Mensagem = new Mensagem();//0,"", "", "",resposta,"","","","", 0f ,"", 0, 0
 		listMensagem = service.listAll();
 	}
 	

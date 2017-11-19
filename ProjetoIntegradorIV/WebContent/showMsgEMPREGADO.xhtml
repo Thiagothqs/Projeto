@@ -85,8 +85,8 @@
 			
        			<div class="form-group">
 					<h:outputLabel value="Resposta:"/>
-					<h:selectOneMenu id="respostas" value="#{mensagemManagedBean.mensagem.resposta.id}" styleClass="form-control">
-						<f:selectItems value="#{respostaManagedBean.listResposta}" var="resposta" itemValue="#{resposta.id}" itemLabel="#{resposta.description}"/>
+					<h:selectOneMenu id="respostas" value="#{mensagemManagedBean.mensagem.resposta.idResposta}" styleClass="form-control">
+						<f:selectItems value="#{respostaManagedBean.listResposta}" var="resposta" itemValue="#{resposta.idResposta}" itemLabel="#{resposta.description}"/>
 					</h:selectOneMenu>
 				</div>	
 			

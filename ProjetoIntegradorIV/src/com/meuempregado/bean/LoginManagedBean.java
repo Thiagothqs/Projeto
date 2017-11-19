@@ -9,7 +9,6 @@ import javax.faces.bean.SessionScoped;
 
 import com.meuempregado.model.Empregado;
 import com.meuempregado.model.Empregador;
-import com.meuempregado.model.Status;
 import com.meuempregado.service.LoginService;
 
 @ManagedBean(name = "loginManagedBean")
@@ -19,7 +18,6 @@ public class LoginManagedBean implements Serializable {
 	
 	private Empregado empregado;
 	private Empregador empregador;
-	private Status status;
 	private LoginService service;
 	private String email;
 	private String senha;
@@ -27,9 +25,8 @@ public class LoginManagedBean implements Serializable {
 	String retorna = "";
 	
 	public LoginManagedBean() {
-		status = new Status(0, "");
 		empregador = new Empregador(0, "", "", "", "", "", "", "", "", "", "");
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","",status,"","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
 		service = new LoginService();
 	}
 	
@@ -53,14 +50,6 @@ public class LoginManagedBean implements Serializable {
 
 	public void setEmpregador(Empregador empregador) {
 		this.empregador = empregador;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
 	public LoginService getService() {

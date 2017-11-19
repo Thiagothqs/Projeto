@@ -1,34 +1,28 @@
 package com.meuempregado.dao;
 
-import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.meuempregado.model.Resposta;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
-public class RespostaDAO extends GenericDAO{
+import com.meuempregado.model.Resposta;
+import com.meuempregado.dao.Conexao;
+
+public class RespostaDAO {
+	EntityManagerFactory emf = Conexao.getInstance();
 	
-	private PreparedStatement ps;
-	private String LISTAR="SELECT * FROM tb_resposta;";
-	
-	public List<Resposta> listAll () throws SQLException, ClassNotFoundException, IOException {
-		openConnection();
+	public List<Resposta> listAll () {
+		EntityManager em = emf.createEntityManager();
 		
-		ps = connect.prepareStatement(LISTAR);
-			
-		ResultSet rs = ps.executeQuery();
-		List<Resposta> list = new ArrayList<Resposta>();
+		em.getTransaction().begin();
 		
-		while(rs.next()) {
-			list.add(new Resposta(rs.getInt("idResposta"), rs.getString("description")));
-		}
+		Query q = em.createQuery("FROM Resposta");
 		
-		closeConnection();
+		em.getTransaction().commit();
+		//em.close();
 		
-		return list;
+		return q.getResultList();
 	}
 
 }

@@ -8,7 +8,6 @@ import javax.faces.bean.SessionScoped;
 
 import com.meuempregado.model.Empregado;
 import com.meuempregado.model.Empregador;
-import com.meuempregado.model.Status;
 import com.meuempregado.service.ListarEmpregadosService;
 
 @ManagedBean(name= "listarempregadosManagedBean")
@@ -19,20 +18,13 @@ public class ListarEmpregadosManagedBean implements Serializable {
 	private Empregado empregado;
 	private Empregador empregador;
 	private ListarEmpregadosService service;
-	private Status status;
 	private List<Empregado> listaEmpregados;
 	
 	public ListarEmpregadosManagedBean() {
-		status = new Status(0, "");
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","",status,"","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
 		empregador = new Empregador(0, "", "", "", "", "", "", "", "", "", "");
 		service = new ListarEmpregadosService();
 		setListaEmpregados(service.listarEmpregados());
-	}
-	
-	public String contratar() {
-		service.contratar();//empregado, empregador
-		return "index";
 	}
 	
 	public String listarEmpregados() {
@@ -62,14 +54,6 @@ public class ListarEmpregadosManagedBean implements Serializable {
 
 	public void setService(ListarEmpregadosService service) {
 		this.service = service;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
 	public List<Empregado> getListaEmpregados() {

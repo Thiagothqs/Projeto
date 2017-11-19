@@ -1,12 +1,23 @@
 package com.meuempregado.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tb_mensagem")
 public class Mensagem {
-	
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idMensagem;
 	private String nomeempresa;
 	private String email;
 	private String msg;
-	private Resposta resposta;
+	//private Resposta resposta;
 	private String endereco;
 	private String vaga;
 	private String horaentrevista;
@@ -14,17 +25,24 @@ public class Mensagem {
 	private Float salario;
 	private String beneficios;
 	
-	private int idEmpregado;
-	private int idEmpregador;
+	@ManyToOne
+	@JoinColumn(name="idResposta")
+	private Resposta resposta;
+	
+	@JoinColumn(name="idEmpregado")
+	private Integer idEmpregado;
+	
+	@JoinColumn(name="idEmpregador")
+	private Integer idEmpregador;
 
 	public Mensagem(){
 		
 	}
 	
-	public Mensagem(int id, String nomeempresa, String email, String msg, Resposta resposta, String endereco,
+	public Mensagem(int idMensagem, String nomeempresa, String email, String msg, Resposta resposta, String endereco,
 			String vaga, String horaentrevista,String data, Float salario, String beneficios, int idEmpregado, int idEmpregador) {
 		super();
-		this.id = id;
+		this.idMensagem = idMensagem;
 		this.nomeempresa = nomeempresa;
 		this.email = email;
 		this.msg = msg;
@@ -39,11 +57,11 @@ public class Mensagem {
 		this.idEmpregador = idEmpregador;
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdMensagem() {
+		return idMensagem;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idMensagem) {
+		this.idMensagem = idMensagem;
 	}
 	public String getNomeempresa() {
 		return nomeempresa;
@@ -106,19 +124,19 @@ public class Mensagem {
 		this.beneficios = beneficios;
 	}
 
-	public int getIdEmpregado() {
+	public Integer getIdEmpregado() {
 		return idEmpregado;
 	}
 
-	public void setIdEmpregado(int idEmpregado) {
+	public void setIdEmpregado(Integer idEmpregado) {
 		this.idEmpregado = idEmpregado;
 	}
 
-	public int getIdEmpregador() {
+	public Integer getIdEmpregador() {
 		return idEmpregador;
 	}
 
-	public void setIdEmpregador(int idEmpregador) {
+	public void setIdEmpregador(Integer idEmpregador) {
 		this.idEmpregador = idEmpregador;
 	}
 

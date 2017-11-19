@@ -20,7 +20,7 @@ public class MensagemService {
 		List<Mensagem> listamensagem = new ArrayList<Mensagem>();
 		
 		for(Mensagem item: list) {
-			if(item.getIdEmpregado() == servicelogin.getIdEmpregadologin()) {
+			if(item.getIdEmpregado() == servicelogin.getIdEmpregadologin()) {//==
 				System.out.println(item.getIdEmpregado() +"MENSAGEM SERVICE"+servicelogin.getIdEmpregadologin());//servicelogin.getIdEmpregadologin()
 				listamensagem.add(item);
 			}
@@ -43,9 +43,9 @@ public class MensagemService {
 	
 	public void updateMensagem(Mensagem c) throws SQLException, ClassNotFoundException, IOException {
 		dao.update(c);
-		//if(c.getResposta().getDescription().equals("SIM")) {
-			//daoListarEmpregado.contratar();//c.getIdEmpregado(), c.getIdEmpregador()
-		//}
+		/*if(c.getResposta().getDescription().equals("SIM")) {
+			daoListarEmpregado.contratar();//c.getIdEmpregado(), c.getIdEmpregador()
+		}*/
 	}
 
 }

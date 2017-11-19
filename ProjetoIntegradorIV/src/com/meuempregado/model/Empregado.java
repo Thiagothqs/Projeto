@@ -1,7 +1,16 @@
 package com.meuempregado.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tb_empregado")
 public class Empregado {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String nome;
 	private String data_nascimento;
@@ -19,12 +28,11 @@ public class Empregado {
 	private String email;
 	private String senha;
 	private String sexo;
-	private Status status;
 	private String descricao;
 	
 	public Empregado(Integer id, String nome, String data_nascimento, String cpf, String rg, String telefone_fixo,
 			String telefone_celular, String cep, String endereco_rua, String endereco_numero, String complemento,
-			String bairro, String cidade, String estado, String email, String senha, Status status, String sexo,String descricao) {
+			String bairro, String cidade, String estado, String email, String senha, String sexo,String descricao) {
 		this.id = id;
 		this.nome = nome;
 		this.data_nascimento = data_nascimento;
@@ -41,7 +49,6 @@ public class Empregado {
 		this.estado = estado;
 		this.email = email;
 		this.senha = senha;
-		this.status = status;
 		this.sexo = sexo;
 		this.descricao=descricao;
 	}
@@ -151,12 +158,6 @@ public class Empregado {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public Status getStatus() {
-		return status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 	public String getSexo() {
 		return sexo;

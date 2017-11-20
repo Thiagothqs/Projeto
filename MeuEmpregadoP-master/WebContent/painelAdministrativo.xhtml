@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!--  IMPORTANDO HEAD -->
+	<ui:include src="incPainel/painelHead.xhtml" />
+</h:head>
+<h:body class="nav-md">
+
+	<div class="container body">
+
+		<div class="main_container">
+
+			<!--  IMPORTANDO MENU PRINCIPAL -->
+			<ui:include src="incPainel/painelMenu.xhtml" />
+
+			<!-- IMPORTANDO MENU TOPO -->
+			<ui:include src="incPainel/painelMenuTopo.xhtml" />
+			<!-- PAGINA PRINCIPAL -->
+
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="row top_tiles">
+						<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="tile-stats">
+								<div class="icon">
+									<i class="fa fa-users" aria-hidden="true"></i>
+								</div>
+								<div class="count timer count-title count-number" data-to="6500" data-speed="1000"/>
+								<h3>Usuários</h3>
+								<p>Total de usuários cadastrados.</p>
+							</div>
+						</div>
+						<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="tile-stats">
+								<div class="icon">
+									<i class="fa fa-line-chart" aria-hidden="true"></i>
+								</div>
+								<div class="count timer count-title count-number" data-to="10000" data-speed="1000"/>
+								<h3>Anúncios</h3>
+								<p>Total de anúncios.</p>
+							</div>
+						</div>
+						<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="tile-stats">
+								<div class="icon">
+									<i class="fa fa-black-tie" aria-hidden="true"></i>
+								</div>
+								<div class="count timer count-title count-number" data-to="1500" data-speed="1000"/>
+								<h3>Empregadores</h3>
+								<p>Total de empregadores.</p>
+							</div>
+						</div>
+						<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="tile-stats">
+								<div class="icon">
+									<i class="fa fa-id-card-o" aria-hidden="true"></i>
+								</div>
+								<div class="count timer count-title count-number" data-to="5000" data-speed="1000"/>
+								<h3>Empregados</h3>
+								<p>Total de empregados.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Aqui adiciona uma nova <div class="row"> -->
+
+
+
+
+					<!-- /Aqui adiciona uma nova <div class="row"> -->
+				</div>
+			</div>
+		</div>
+
+		<!-- / PAGINA PRINCIPAL -->
+
+		<!-- FOOTER PRINCIPAL -->
+		<ui:include src="incPainel/painelFooter.xhtml" />
+		<!-- /FOOTER PRINCIPAL -->
+	</div>
+	<!-- IMPORT JS -->
+	<ui:include src="incPainel/painelImportsJs.xhtml" />
+	<!-- /IMPORT JS -->
+</h:body>
+</html>

@@ -21,10 +21,11 @@ public class ListarEmpregadosManagedBean implements Serializable {
 	private List<Empregado> listaEmpregados;
 	
 	public ListarEmpregadosManagedBean() {
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","", true);
 		empregador = new Empregador(0, "", "", "", "", "", "", "", "", "", "");
 		service = new ListarEmpregadosService();
-		setListaEmpregados(service.listarEmpregados());
+		//setListaEmpregados(service.listarEmpregados());
+		listaEmpregados = service.listarEmpregados();
 	}
 	
 	public String listarEmpregados() {

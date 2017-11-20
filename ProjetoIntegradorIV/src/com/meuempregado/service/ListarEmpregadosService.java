@@ -10,6 +10,14 @@ public class ListarEmpregadosService {
 	ListarEmpregadosDAO dao = new ListarEmpregadosDAO();
 	
 	public List<Empregado> listarEmpregados() {
-		return dao.listarEmpregados();
+		List<Empregado> listaEmpregado = dao.listarEmpregados();
+		
+		for(int i=0;i<listaEmpregado.size();i++) {
+			//if(listaEmpregado.get(i).get) {
+				//listaEmpregado.add(e);
+			//}
+		}
+		
+		return listaEmpregado;
 	}
 }

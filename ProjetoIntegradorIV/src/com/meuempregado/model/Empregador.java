@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="tb_empregador")
 public class Empregador {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idEmpregador;
 	private String nome;
 	private String rg;
@@ -26,7 +26,7 @@ public class Empregador {
 	public Empregador(Integer id, String nome, String rg, String cpf, String orgao_emissor, String telefone_celular,
 			String telefone_fixo, String data_nascimento, String sexo, String email, String senha) {
 		super();
-		this.idEmpregador = id;
+		//this.idEmpregador = id;
 		this.nome = nome;
 		this.rg = rg;
 		this.cpf = cpf;
@@ -109,10 +109,5 @@ public class Empregador {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-	
-	
-	
 
 }

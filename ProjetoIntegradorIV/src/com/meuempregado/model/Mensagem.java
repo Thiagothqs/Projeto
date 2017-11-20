@@ -12,12 +12,11 @@ import javax.persistence.Table;
 @Table(name="tb_mensagem")
 public class Mensagem {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMensagem;
 	private String nomeempresa;
 	private String email;
 	private String msg;
-	//private Resposta resposta;
 	private String endereco;
 	private String vaga;
 	private String horaentrevista;
@@ -34,10 +33,6 @@ public class Mensagem {
 	
 	@JoinColumn(name="idEmpregador")
 	private Integer idEmpregador;
-
-	public Mensagem(){
-		
-	}
 	
 	public Mensagem(int idMensagem, String nomeempresa, String email, String msg, Resposta resposta, String endereco,
 			String vaga, String horaentrevista,String data, Float salario, String beneficios, int idEmpregado, int idEmpregador) {
@@ -55,6 +50,10 @@ public class Mensagem {
 		this.beneficios = beneficios;
 		this.idEmpregado = idEmpregado;
 		this.idEmpregador = idEmpregador;
+	}
+	
+	public Mensagem(){
+		
 	}
 	
 	public int getIdMensagem() {
@@ -127,7 +126,6 @@ public class Mensagem {
 	public Integer getIdEmpregado() {
 		return idEmpregado;
 	}
-
 	public void setIdEmpregado(Integer idEmpregado) {
 		this.idEmpregado = idEmpregado;
 	}
@@ -135,7 +133,6 @@ public class Mensagem {
 	public Integer getIdEmpregador() {
 		return idEmpregador;
 	}
-
 	public void setIdEmpregador(Integer idEmpregador) {
 		this.idEmpregador = idEmpregador;
 	}

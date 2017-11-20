@@ -22,7 +22,7 @@ public class EmpregadoManagedBean implements Serializable {
 	
 	public EmpregadoManagedBean() throws ClassNotFoundException, SQLException, IOException{
 		serviceempregado = new EmpregadoService();
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","", true);
 		listEmpregado = serviceempregado.listAll();
 	}
 	

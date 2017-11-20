@@ -141,13 +141,6 @@
 				</div>
 				
 				<div class="form-group">
-					<h:outputLabel value="Status:"/>
-					<h:selectOneMenu id="categories" value="#{empregadoManagedBean.empregado.status.id}" styleClass="form-control">
-						<f:selectItems value="#{statusManagedBean.listStatus}" var="status" itemValue="#{status.id}" itemLabel="#{status.description}"/>
-					</h:selectOneMenu>
-				</div>
-				
-				<div class="form-group">
 					<h:outputLabel value="Sexo:"/>
 					<h:selectOneRadio value="#{empregadoManagedBean.empregado.sexo}">
 						<f:selectItem itemValue="M" itemLabel="Masculino" />

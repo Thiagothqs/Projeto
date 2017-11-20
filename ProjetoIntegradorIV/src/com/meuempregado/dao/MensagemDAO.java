@@ -20,6 +20,7 @@ public class MensagemDAO {
 		em.getTransaction().begin();
 		
 		em.persist(c);
+		em.flush();
 		
 		em.getTransaction().commit();
 		em.close();
@@ -30,7 +31,7 @@ public class MensagemDAO {
 		
 		em.getTransaction().begin();
 		
-		Query q = em.createQuery("SELECT m FROM Mensagem m JOIN m.resposta r");//select m from Mensagem m join Resposta r on m.idresposta = r.idResposta
+		Query q = em.createQuery("SELECT m FROM Mensagem m JOIN m.resposta r ON m.resposta.idResposta = r.idResposta");//SELECT m FROM Mensagem m JOIN m.resposta r where m.idResposta = r.id // SELECT m FROM Mensagem m JOIN m.resposta r
 		
 		em.getTransaction().commit();
 		//em.close();

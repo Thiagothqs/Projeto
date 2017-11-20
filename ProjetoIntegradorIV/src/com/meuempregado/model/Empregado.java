@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="tb_empregado")
 public class Empregado {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String data_nascimento;
@@ -30,10 +30,12 @@ public class Empregado {
 	private String sexo;
 	private String descricao;
 	
+	private boolean ativo;
+	
 	public Empregado(Integer id, String nome, String data_nascimento, String cpf, String rg, String telefone_fixo,
 			String telefone_celular, String cep, String endereco_rua, String endereco_numero, String complemento,
-			String bairro, String cidade, String estado, String email, String senha, String sexo,String descricao) {
-		this.id = id;
+			String bairro, String cidade, String estado, String email, String senha, String sexo,String descricao, boolean ativo) {
+		//this.id = id;
 		this.nome = nome;
 		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
@@ -51,6 +53,7 @@ public class Empregado {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.descricao=descricao;
+		this.ativo = ativo;
 	}
 	
 	public Empregado(){
@@ -164,5 +167,13 @@ public class Empregado {
 	}
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 }

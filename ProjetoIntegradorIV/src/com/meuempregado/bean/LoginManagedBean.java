@@ -26,7 +26,7 @@ public class LoginManagedBean implements Serializable {
 	
 	public LoginManagedBean() {
 		empregador = new Empregador(0, "", "", "", "", "", "", "", "", "", "");
-		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","");
+		empregado = new Empregado(0, "", "","", "","", "","", "","", "","", "","", "","","","", true);
 		service = new LoginService();
 	}
 	

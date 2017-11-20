@@ -20,9 +20,12 @@ public class MensagemService {
 		List<Mensagem> listamensagem = new ArrayList<Mensagem>();
 		
 		for(Mensagem item: list) {
-			if(item.getIdEmpregado() == servicelogin.getIdEmpregadologin()) {//==
+			if(item.getIdEmpregado() == servicelogin.getIdEmpregadologin()) {
 				System.out.println(item.getIdEmpregado() +"MENSAGEM SERVICE"+servicelogin.getIdEmpregadologin());//servicelogin.getIdEmpregadologin()
-				listamensagem.add(item);
+				//if(item.getResposta().getDescription().equals("SIM")) {//NÃO
+					//System.out.println("EITA BICHO, TÁ PASSANDO AQUI");//FILTRO DE MOSTRAR SÓ QUEM RESPONDEU SIM
+					listamensagem.add(item);
+				//}
 			}
 		}
 		
@@ -35,7 +38,6 @@ public class MensagemService {
 		System.out.println("Id Empregado (Mensagem Service) = "+servicelogin.getIdEmpregadologin());
 		dao.salvar(c);
 	}
-	
 	
 	public void deleteMensagem(Mensagem c) throws SQLException, ClassNotFoundException, IOException {
 		dao.delete(c);

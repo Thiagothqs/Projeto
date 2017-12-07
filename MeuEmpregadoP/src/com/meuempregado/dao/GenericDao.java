@@ -3,8 +3,10 @@ package com.meuempregado.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
+import com.meuempregado.service.LoginService;
 import com.meuempregado.util.ConnectDao;
 
 public class GenericDao<E> implements InterfaceGenericDao<E> { 
@@ -13,6 +15,8 @@ public class GenericDao<E> implements InterfaceGenericDao<E> {
 
 	private final Class<E> entityClass;
 
+	LoginService service = new LoginService();
+	
 	public GenericDao(Class<E> entityClass) {
 	 	this.entityClass = entityClass;
 	}
@@ -91,17 +95,33 @@ public class GenericDao<E> implements InterfaceGenericDao<E> {
 		
 		em = ConnectDao.getInstance().createEntityManager();
 
+		em.getTransaction().begin();
+		
 		CriteriaQuery<E> query = em.getCriteriaBuilder().createQuery(entityClass);
 		query.select(query.from(entityClass));
 
 		List<E> lista = em.createQuery(query).getResultList();
 
+		em.getTransaction().commit();//*
 		em.close();
 		
 		return lista;
 
 	}
 
+	@Override
+	public List<E> listarMensagens(){
+		em = ConnectDao.getInstance().createEntityManager();
+		
+		em.getTransaction().begin();
+		
+		Query q = em.createQuery("SELECT m FROM Mensagem m JOIN m.resposta r ON m.resposta.idResposta = r.idResposta");//SELECT m FROM Mensagem m JOIN m.resposta r where m.idResposta = r.id // SELECT m FROM Mensagem m JOIN m.resposta r
+		
+		em.getTransaction().commit();
+		
+		return q.getResultList();
+	}
+	
 	@Override
 	public E buscarPorId(Integer id) {
 

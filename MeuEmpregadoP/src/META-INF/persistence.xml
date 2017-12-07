@@ -6,6 +6,9 @@
 		<class>com.meuempregado.model.Empregador</class>
 		<class>com.meuempregado.model.Mensagem</class>
 		<class>com.meuempregado.model.Resposta</class>
+		<class>com.meuempregado.model.ContratoDemissao</class>
+		<class>com.meuempregado.model.ContratoSeguro</class>
+		<class>com.meuempregado.model.PacoteSeguro</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />

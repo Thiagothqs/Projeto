@@ -106,11 +106,10 @@
 												</div>
 												<div id="actions" class="row">
 													<div class="col-md-12">
-														<h:commandLink styleClass="btn btn-primary" value="Save"
-															action="#{mensagemManagedBean.insertMensagemAction}">
-															<f:setPropertyActionListener
-																target="#{contratoSeguroManagedBean.mensagem}"
-																value="#{mensagemManagedBean.mensagem}" />
+														<h:commandLink styleClass="btn btn-primary" value="Save" action="#{mensagemManagedBean.insertMensagemAction}">
+															<f:setPropertyActionListener target="#{contratoSeguroManagedBean.mensagem}" value="#{mensagemManagedBean.mensagem}" />
+															<f:setPropertyActionListener target="#{mensagemManagedBean.empregado.id}" value="#{empregadoManagedBean.empregado.id}" />
+															<f:setPropertyActionListener target="#{mensagemManagedBean.resposta.idResposta}" value="1" />
 														</h:commandLink>
 														<!-- <h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/> -->
 													</div>

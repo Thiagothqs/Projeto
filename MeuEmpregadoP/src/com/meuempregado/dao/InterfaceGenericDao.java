@@ -10,4 +10,5 @@ public interface InterfaceGenericDao<E>{
 	List<E> listarTodos();
 	E buscarPorId(Integer id);
 	Integer contarTodos();
+	List<E> listarMensagens();
 }

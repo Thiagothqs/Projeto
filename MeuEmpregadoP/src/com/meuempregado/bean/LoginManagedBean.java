@@ -33,7 +33,6 @@ public class LoginManagedBean implements Serializable {
 	
 	public String logar() throws ClassNotFoundException, SQLException, IOException {
 		retorna = service.login(email, senha, tipoUsuario);//, empregado, empregador
-		
 		return retorna;
 	}
 	

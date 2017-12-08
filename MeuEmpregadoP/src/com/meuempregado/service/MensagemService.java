@@ -22,9 +22,8 @@ public class MensagemService {
 		
 		for(Mensagem item: list) {
 			if(item.getIdEmpregado() == servicelogin.getIdEmpregadologin()) {
-				System.out.println(item.getIdEmpregado() +"MENSAGEM SERVICE"+servicelogin.getIdEmpregadologin());//servicelogin.getIdEmpregadologin()
+				//System.out.println(item.getIdEmpregado() +"MENSAGEM SERVICE"+servicelogin.getIdEmpregadologin());//servicelogin.getIdEmpregadologin()
 				//if(item.getResposta().getDescription().equals("SIM")) {//NÃO
-					//System.out.println("EITA BICHO, TÁ PASSANDO AQUI");//FILTRO DE MOSTRAR SÓ QUEM RESPONDEU SIM
 					listamensagem.add(item);
 				//}
 			}

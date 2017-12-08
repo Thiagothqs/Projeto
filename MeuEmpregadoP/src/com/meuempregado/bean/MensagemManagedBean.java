@@ -25,11 +25,11 @@ public class MensagemManagedBean implements Serializable {
 	
 	public MensagemManagedBean() {
 		service = new MensagemService();
-		resposta = new Resposta();
-		Mensagem = new Mensagem();
-		Mensagem.setResposta(resposta);
-		listMensagem = service.listar();
+		resposta = new Resposta(0, "");
+		Mensagem = new Mensagem(0, "", "", "", resposta, "", "", "", "", 0f, "", 0, 0, true, null, false);
 		empregado = new Empregado();
+		//Mensagem.setResposta(resposta);
+		listMensagem = service.listar();
 	}
 	
 	///////////////////////////insert
@@ -40,7 +40,9 @@ public class MensagemManagedBean implements Serializable {
 			return "contratoPacoteSeguro";
 		}else{
 			System.out.println("Saving...");
-			//Mensagem.getResposta().setIdResposta(1);;
+			//System.out.println("Entrou? - Resposta.idResposta = "+resposta.getIdResposta());
+			//System.out.println("Mensagem.Resposta.idResposta = "+Mensagem.getResposta().getIdResposta());
+			//Mensagem.getResposta().setIdResposta(1);
 			Mensagem.setIdEmpregado(empregado.getId());
 			service.cadastrar(Mensagem);
 			Mensagem = new Mensagem();
@@ -62,11 +64,13 @@ public class MensagemManagedBean implements Serializable {
 	///////update
 	public String updateMensagemAction(){
 		System.out.println("Updating...");
-		if(Mensagem.getResposta().getDescription().equals("Sim")){//if(Mensagem.getResposta().equals("Sim")){
+		if(Mensagem.getResposta().getDescription().equals("SIM")){//if(Mensagem.getResposta().equals("Sim")){
 			Mensagem.setAtivo(true);
 		}else{
 			Mensagem.setAtivo(false);
 		}
+		
+		System.out.println(Mensagem.getAtivo()+"Ativo?");
 		
 		service.atulizar(Mensagem);
 		this.listMensagem = service.listar();

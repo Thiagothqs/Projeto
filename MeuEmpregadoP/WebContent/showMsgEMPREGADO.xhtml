@@ -117,22 +117,10 @@
 
 													<h:outputLabel value="Resposta do candidato:" />
 													<h:selectOneRadio
-														value="#{mensagemManagedBean.mensagem.resposta}">
-														<f:selectItem itemValue="Sim" itemLabel="Sim" />
-														<f:selectItem itemValue="Não" itemLabel="Não" />
+														value="#{mensagemManagedBean.mensagem.resposta.description}">
+														<f:selectItem itemValue="SIM" itemLabel="Sim" />
+														<f:selectItem itemValue="NÃO" itemLabel="Não" />
 													</h:selectOneRadio>
-												</div>
-												
-												<div class="form-group">
-													<h:outputLabel value="Nome do candidato:" />
-													<h:inputText styleClass="form-control"
-														value="#{mensagemManagedBean.mensagem.nomeFuncionario}" />
-												</div>
-
-												<div class="form-group">
-													<h:outputLabel value="Cpf do candidato:" />
-													<h:inputText styleClass="form-control"
-														value="#{mensagemManagedBean.mensagem.cpfFuncionario}" />
 												</div>
 
 												<div id="actions" class="row">

@@ -67,9 +67,12 @@ public class Mensagem {
 	public int getIdMensagem() {
 		return idMensagem;
 	}
-	public void setId(int idMensagem) {
+	public void setIdMensagem(int idMensagem) {
 		this.idMensagem = idMensagem;
 	}
+	/*public void setId(int idMensagem) {
+		this.idMensagem = idMensagem;
+	}*/
 	public String getNomeempresa() {
 		return nomeempresa;
 	}
@@ -89,6 +92,10 @@ public class Mensagem {
 		this.msg = msg;
 	}
 	public Resposta getResposta() {
+		if (resposta == null){
+			resposta = new Resposta();
+		}//*
+		
 		return resposta;
 	}
 	public void setResposta(Resposta resposta) {
@@ -167,10 +174,6 @@ public class Mensagem {
 
 	public void setOfereceSeguro(Boolean ofereceSeguro) {
 		this.ofereceSeguro = ofereceSeguro;
-	}
-
-	public void setIdMensagem(int idMensagem) {
-		this.idMensagem = idMensagem;
 	}
 
 }

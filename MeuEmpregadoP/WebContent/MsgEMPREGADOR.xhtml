@@ -7,6 +7,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui">
+	<f:metadata> 
+		<f:event type="preRenderView" listener="#{empregadoManagedBean.searchByIdAction}"/> 
+	</f:metadata>
 
 <h:head>
 	<!--  IMPORTANDO HEAD -->
@@ -110,21 +113,21 @@
 											<div class="form-group">
 												<h:outputLabel value="Resposta do candidato:" />
 												<h:inputText styleClass="form-control"
-													value="#{mensagemManagedBean.mensagem.resposta}"
+													value="#{mensagemManagedBean.mensagem.resposta.description}"
 													disabled="true" />
 											</div>
 
 											<div class="form-group">
 												<h:outputLabel value="Nome do candidato:" />
 												<h:inputText styleClass="form-control"
-													value="#{mensagemManagedBean.mensagem.nomeFuncionario}"
+													value="#{empregadoManagedBean.empregado.nomeCompleto}"
 													disabled="true" />
 											</div>
 
 											<div class="form-group">
 												<h:outputLabel value="Cpf do candidato:" />
 												<h:inputText styleClass="form-control"
-													value="#{mensagemManagedBean.mensagem.cpfFuncionario}" disabled="true" />
+													value="#{empregadoManagedBean.empregado.cpf}" disabled="true" />
 											</div>
 
 											<div id="actions" class="row">
@@ -135,11 +138,6 @@
 
 													<h:commandLink styleClass="btn btn-primary" value="Deletar"
 														action="#{mensagemManagedBean.deleteMensagemAction}" />
-													
-													<h:commandLink rendered="#{mensagemManagedBean.mensagem.ativo==true}" value="Demitir" styleClass="btn btn-primary"
-														action="#{DemissaoBean.ObterDadosAction}">
-														<f:setPropertyActionListener target="#{DemissaoBean.mensagem}" value="#{mensagemManagedBean.mensagem}"/>
-													</h:commandLink>
 												</div>
 											</div>
 										</h:form>

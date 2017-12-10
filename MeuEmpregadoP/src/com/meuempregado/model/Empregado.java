@@ -42,6 +42,8 @@ public class Empregado {
 	//FAVOR INSERIR PQ SERA NECESSÁRIO NA CONTRATAÇÃO 
 	private String email;
 	private String senha;
+	
+	private Integer contratoseguro;
 	//Construtor vazio
 	public Empregado() {
 		
@@ -75,38 +77,32 @@ public class Empregado {
 	/*Construtor para inserir novos Empregados. (Não há necessidade de id por parâmetro, pois a função AUTO INCREMENT 
 	*do banco de dados seta automaticamente o id do próximo registro)
 	**/
-	public Empregado(String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefoneFixo,
-			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
-			String bairro, String cidade, String uf, Boolean ativo, Boolean sexo, String descricao,String email,String senha) {
-		this.nome = nomeCompleto;
-		this.data_nascimento = dataNascimento;
+	
+	public Empregado(Integer id, String nome, Date data_nascimento, String cpf, String rg, String telefone_fixo,
+			String telefone_celular, String cep, String endereco_rua, Integer endereco_numero, String complemento,
+			String bairro, String cidade, String estado, Boolean ativo, Boolean sexo, String descricao, String email,
+			String senha, Integer contratoseguro) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.telefone_fixo = telefoneFixo;
-		this.telefone_celular = telefoneCelular;
+		this.telefone_fixo = telefone_fixo;
+		this.telefone_celular = telefone_celular;
 		this.cep = cep;
-		this.endereco_rua = enderecoRua;
-		this.endereco_numero = enderecoNumero;
+		this.endereco_rua = endereco_rua;
+		this.endereco_numero = endereco_numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cidade = cidade;
-		this.estado = uf;
+		this.estado = estado;
 		this.ativo = ativo;
 		this.sexo = sexo;
 		this.descricao = descricao;
 		this.email = email;
 		this.senha = senha;
-	}
-
-	//Método toString
-	@Override
-	public String toString() {
-		return "Empregado [id=" + id + ", nomeCompleto=" + nome + ", dataNascimento=" + data_nascimento
-				+ ", cpf=" + cpf + ", rg=" + rg + ", telefoneFixo=" + telefone_fixo + ", telefoneCelular="
-				+ telefone_celular + ", cep=" + cep + ", enderecoRua=" + endereco_rua + ", enderecoNumero="
-				+ endereco_numero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade
-				+ ", uf=" + estado + ", ativo=" + ativo + ", sexo=" + sexo
-				+ ", descricao="+  descricao + "]\n";
+		this.contratoseguro = contratoseguro;
 	}
 	
 	//Getters and Setters
@@ -260,5 +256,69 @@ public class Empregado {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Date getData_nascimento() {
+		return data_nascimento;
+	}
+
+	public void setData_nascimento(Date data_nascimento) {
+		this.data_nascimento = data_nascimento;
+	}
+
+	public String getTelefone_fixo() {
+		return telefone_fixo;
+	}
+
+	public void setTelefone_fixo(String telefone_fixo) {
+		this.telefone_fixo = telefone_fixo;
+	}
+
+	public String getTelefone_celular() {
+		return telefone_celular;
+	}
+
+	public void setTelefone_celular(String telefone_celular) {
+		this.telefone_celular = telefone_celular;
+	}
+
+	public String getEndereco_rua() {
+		return endereco_rua;
+	}
+
+	public void setEndereco_rua(String endereco_rua) {
+		this.endereco_rua = endereco_rua;
+	}
+
+	public Integer getEndereco_numero() {
+		return endereco_numero;
+	}
+
+	public void setEndereco_numero(Integer endereco_numero) {
+		this.endereco_numero = endereco_numero;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Integer getContratoseguro() {
+		return contratoseguro;
+	}
+
+	public void setContratoseguro(Integer contratoseguro) {
+		this.contratoseguro = contratoseguro;
 	}
 }

@@ -34,7 +34,7 @@ public class EmpregadoDAO {
 		em.getTransaction().begin();
 		
 		Query q = em.createQuery("FROM Empregado where cidade like ?");
-		q.setParameter(1, cidade);
+		q.setParameter(0, cidade);
 		
 		em.getTransaction().commit();
 		//em.close();
@@ -42,13 +42,13 @@ public class EmpregadoDAO {
 		return q.getResultList();
 	}
 	
-	public List<Empregado> findEmpregadoByEstado(String estado) throws ClassNotFoundException, SQLException, IOException{
-	EntityManager em = emf.createEntityManager();
+	public List<Empregado> findEmpregadoById(Integer id) throws ClassNotFoundException, SQLException, IOException{
+		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
 		
-		Query q = em.createQuery("FROM Empregado where estado like ?");
-		q.setParameter(0, estado);
+		Query q = em.createQuery("FROM Empregado where id like ?");
+		q.setParameter(0, id);
 		
 		em.getTransaction().commit();
 		//em.close();

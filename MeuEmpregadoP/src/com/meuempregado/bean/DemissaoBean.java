@@ -11,9 +11,6 @@ import com.meuempregado.model.Mensagem;
 import com.meuempregado.service.MensagemService;
 import com.meuempregado.service.TipoDemissaoService;
 
-
-
-
 @ManagedBean(name = "DemissaoBean")
 @SessionScoped
 

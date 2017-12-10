@@ -12,6 +12,22 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/MeusEmpregados.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>contratoPacoteSeguro</from-outcome>
+			<to-view-id>/contratoPacoteSeguro.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/contratoPacoteSeguro.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>MeusEmpregados</from-outcome>
+			<to-view-id>/MeusEmpregados.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/alterarPacoteSeguro.xhtml</from-view-id>
@@ -162,7 +178,7 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>MsgEMPREGADOR.xhtml</from-view-id>
+		<from-view-id>MeusEmpregados.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>telaDemissao</from-outcome>
 			<to-view-id>telaDemissao.xhtml</to-view-id>

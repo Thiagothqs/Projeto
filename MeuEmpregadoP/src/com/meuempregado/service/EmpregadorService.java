@@ -1,7 +1,10 @@
 package com.meuempregado.service;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
+import com.meuempregado.dao.EmpregadorDAO;
 import com.meuempregado.dao.FactoryDao;
 import com.meuempregado.model.Empregador;
 
@@ -19,7 +22,8 @@ public class EmpregadorService {
 	public void atulizar(Empregador e){
 		FactoryDao.createGenericDao(Empregador.class).alterar(e);
 	}
-	public Empregador buscarId(Integer id){
-		return FactoryDao.createGenericDao(Empregador.class).buscarPorId(id);
+	public List<Empregador> buscarId(Integer id) throws ClassNotFoundException, SQLException, IOException{
+		EmpregadorDAO dao = new EmpregadorDAO();
+		return dao.findEmpregadoById(id);
 	}
 }

@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -21,10 +23,13 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.meuempregado.model.ContratoSeguro;
 import com.meuempregado.model.Empregado;
+import com.meuempregado.model.Empregador;
 import com.meuempregado.model.Mensagem;
 import com.meuempregado.model.PacoteSeguro;
 import com.meuempregado.service.ContratoSeguroService;
 import com.meuempregado.service.EmpregadoService;
+import com.meuempregado.service.EmpregadorService;
+import com.meuempregado.service.LoginService;
 import com.meuempregado.service.PacoteSeguroService;
 
 @ManagedBean(name = "contratoSeguroManagedBean")
@@ -36,8 +41,12 @@ public class ContratoSeguroManagedBean implements Serializable{
 	private List<ContratoSeguro> contratos;
 	private ContratoSeguroService service;
 	
-    private Integer idempregado;
-    private Mensagem mensagem = new Mensagem(); 
+	private EmpregadoService serviceempregado = new EmpregadoService();
+	private Empregado empregado = new Empregado();
+	
+	private LoginService login;
+	
+	private EmpregadorService empregadorservice = new EmpregadorService();
 	
 	public ContratoSeguroManagedBean(){
 		atualizar();
@@ -57,9 +66,6 @@ public class ContratoSeguroManagedBean implements Serializable{
 	}
 	public void addEmpregadoAction(){
 		
-		EmpregadoService service = new EmpregadoService();
-		Empregado empregado = service.buscarId(idempregado);
-		
 		contrato.setRg_funcionario(empregado.getRg());
 		contrato.setNome_funcionario(empregado.getNomeCompleto());
 		contrato.setCpf_funcionario(empregado.getCpf());
@@ -67,9 +73,6 @@ public class ContratoSeguroManagedBean implements Serializable{
 		contrato.setCep_funcionario(empregado.getCep());
 		contrato.setCidade_funcionario(empregado.getCidade());
 		contrato.setUf_funcionario(empregado.getUf());
-		
-		contrato.setNome_empregador(mensagem.getNomeempresa());
-		contrato.setVaga_empregador(mensagem.getVaga());
 	}
 	public String addPacote1(){
 		addEmpregadoAction();
@@ -85,8 +88,18 @@ public class ContratoSeguroManagedBean implements Serializable{
 		contrato.setAtivo(true);
 		service.cadastrar(contrato);
 		
+		ContratoSeguroService contratoseguroservice = new ContratoSeguroService();
+		List<ContratoSeguro> contratos = contratoseguroservice.listar();
+		for(ContratoSeguro c :contratos) {
+			if(c.getNome_funcionario().equals(contrato.getNome_funcionario())) {
+				empregado.setContratoseguro(c.getId());
+				serviceempregado.atulizar(empregado);
+			}
+		}
+		imprimir();
+		
 		atualizar();
-		return "novaMensagemEMPREGADO";
+		return "MeusEmpregados";
 	}
 	public String addPacote2(){
 		addEmpregadoAction();
@@ -100,9 +113,10 @@ public class ContratoSeguroManagedBean implements Serializable{
 		contrato.setValorMensal_pacote(pacote.getValorMensal());
 		contrato.setAtivo(true);
 		service.cadastrar(contrato);
+		imprimir();
 		
 		atualizar();
-		return "novaMensagemEMPREGADO";
+		return "MeusEmpregados";
 	}
 	public String addPacote3(){
 		addEmpregadoAction();
@@ -116,17 +130,29 @@ public class ContratoSeguroManagedBean implements Serializable{
 		contrato.setValorMensal_pacote(pacote.getValorMensal());
 		contrato.setAtivo(true);
 		service.cadastrar(contrato);
+		imprimir();
 		
 		atualizar();
-		return "novaMensagemEMPREGADO";
+		return "MeusEmpregados";
 	}
 	public String cancelar(){
 		atualizar();
-		return "novaMensagemEMPREGADO";
+		return "MeusEmpregados";
 	}
 	public String restringir(){
 		contrato.setAtivo(false);
 		service.atulizar(contrato);
+		
+		Empregado empregado1 = new Empregado();
+		List<Empregado> list = serviceempregado.listar();
+		
+		for(Empregado e:list) {
+			if(contrato.getNome_funcionario().equals(e.getNomeCompleto())) {
+				empregado1 = e;
+				empregado1.setContratoseguro(null);
+				serviceempregado.atulizar(empregado1);
+			}
+		}
 		
 		atualizar();
 		return "listaContratoSeguro";
@@ -154,18 +180,6 @@ public class ContratoSeguroManagedBean implements Serializable{
 		service = new ContratoSeguroService();
 		contratos = service.listar();
 	}
-	public Mensagem getMensagem() {
-		return mensagem;
-	}
-	public void setMensagem(Mensagem mensagem) {
-		this.mensagem = mensagem;
-	}
-	public Integer getIdempregado() {
-		return idempregado;
-	}
-	public void setIdempregado(Integer idempregado) {
-		this.idempregado = idempregado;
-	}
 	public String imprimir() {
 		// PDF
 		Document doc = new Document(PageSize.A4);
@@ -173,7 +187,7 @@ public class ContratoSeguroManagedBean implements Serializable{
 
 		try {
 			PdfWriter.getInstance(doc, new FileOutputStream(
-					"C:/Users/Daniel/Documents/" + contrato.getNome_funcionario() + contrato.getNome_empregador() + ".pdf"));
+					"C:/Users/Lenovo/Documents/" + contrato.getNome_funcionario() + contrato.getNome_pacote() + ".pdf"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (DocumentException e) {
@@ -499,12 +513,30 @@ public class ContratoSeguroManagedBean implements Serializable{
 			e.printStackTrace();
 		}
 		doc.close();
-		File pdf = new File("C:/Users/Daniel/Documents/" + contrato.getNome_funcionario() + contrato.getNome_empregador() + ".pdf");
+		File pdf = new File("C:/Users/Lenovo/Documents/" + contrato.getNome_funcionario() + contrato.getNome_pacote() + ".pdf");
 		try {
 			Desktop.getDesktop().open(pdf);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return "listaContratoSeguro";
+	}
+	public Empregado getEmpregado() {
+		return empregado;
+	}
+	public void setEmpregado(Empregado empregado) {
+		this.empregado = empregado;
+	}
+	public LoginService getLogin() {
+		return login;
+	}
+	public void setLogin(LoginService login) {
+		this.login = login;
+	}
+	public EmpregadorService getEmpregadorservice() {
+		return empregadorservice;
+	}
+	public void setEmpregadorservice(EmpregadorService empregadorservice) {
+		this.empregadorservice = empregadorservice;
 	}
 }

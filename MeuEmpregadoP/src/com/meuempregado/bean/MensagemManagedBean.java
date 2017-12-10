@@ -19,6 +19,7 @@ public class MensagemManagedBean implements Serializable {
 	
 	private Mensagem Mensagem;
 	private List<Mensagem> listMensagem;
+	private List<Mensagem> listMensagemEmpregador;
 	private MensagemService service;
 	private Empregado empregado;
 	private Resposta resposta;
@@ -29,27 +30,19 @@ public class MensagemManagedBean implements Serializable {
 		Mensagem = new Mensagem(0, "", "", "", resposta, "", "", "", "", 0f, "", 0, 0, true, null, false);
 		empregado = new Empregado();
 		//Mensagem.setResposta(resposta);
+		listMensagemEmpregador = service.listarEmpregador();
 		listMensagem = service.listar();
 	}
 	
 	///////////////////////////insert
 	public String insertMensagemAction(){
-		if(Mensagem.getOfereceSeguro()==null && Mensagem.getIdContratoSeguro()==null){//Mensagem.getOfereceSeguro()&&Mensagem.getIdContratoSeguro()==null
-			System.out.println("Contrato...");
-			
-			return "contratoPacoteSeguro";
-		}else{
 			System.out.println("Saving...");
-			//System.out.println("Entrou? - Resposta.idResposta = "+resposta.getIdResposta());
-			//System.out.println("Mensagem.Resposta.idResposta = "+Mensagem.getResposta().getIdResposta());
-			//Mensagem.getResposta().setIdResposta(1);
 			Mensagem.setIdEmpregado(empregado.getId());
 			service.cadastrar(Mensagem);
 			Mensagem = new Mensagem();
 			this.listMensagem = service.listar();
 			
 			return "indexEMPREGADOR";
-		}
 	}
 	
 	//////////////////////////delete
@@ -124,6 +117,14 @@ public class MensagemManagedBean implements Serializable {
 	public void setResposta(Resposta resposta) {
 		this.resposta = resposta;
 	}
+	public List<Mensagem> getListMensagemEmpregador() {
+		return listMensagemEmpregador;
+	}
+
+	public void setListMensagemEmpregador(List<Mensagem> listMensagemEmpregador) {
+		this.listMensagemEmpregador = listMensagemEmpregador;
+	}
+
 	///////////////////////////////////////////
 	public void atualizar() {
 		service = new MensagemService();	

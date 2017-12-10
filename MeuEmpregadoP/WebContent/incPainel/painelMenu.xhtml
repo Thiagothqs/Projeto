@@ -1,5 +1,5 @@
 <!-- MENU ESQUERDO PAINEL DE CONTROLE -->
-<div class="col-md-3 left_col menu_fixed" xmlns:p="http://primefaces.org/ui">
+<div class="col-md-3 left_col menu_fixed" xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 	<div class="left_col scroll-view">
 		<div class="navbar nav_title" style="border: 0;">
 			<a href="painelAdministrativo.xhtml" class="site_title">
@@ -38,12 +38,14 @@
 						<ul class="nav child_menu">
 							<li><a href="indexEMPREGADOR.xhtml">Buscar Empregado</a></li>
 							<li><a href="listamensagemEMPREGADOR.xhtml">Lista de Mensagem</a></li>
+							<li><a href="MeusEmpregados.xhtml">Meus Empregados</a></li>
 						</ul></li>
-					<li><a><i class="fa fa-address-book-o" aria-hidden="true"></i> Empregado <span
-							class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
-							<li><a href="listamensagemEMPREGADO.xhtml">Lista de Propostas Recebidas</a></li>
-						</ul></li>
+						<li><a><i class="fa fa-address-book-o" aria-hidden="true"></i> Empregado <span
+								class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+								<li><a href="listamensagemEMPREGADO.xhtml">Lista de Propostas Recebidas</a></li>
+							</ul>
+						</li>
 					<li><a><i class="fa fa-calendar" aria-hidden="true"></i> Recrutamento <span
 							class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">

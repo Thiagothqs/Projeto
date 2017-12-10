@@ -64,7 +64,7 @@
 
 											<h:form>
 												<h:dataTable styleClass="table table-striped" var="c"
-													value="#{mensagemManagedBean.listMensagem}">
+													value="#{mensagemManagedBean.listMensagemEmpregador}">
 
 													<h:column>
 														<f:facet name="header">
@@ -91,7 +91,7 @@
 														<f:facet name="header">
 															<h:outputLabel value="Resposta" />
 														</f:facet>
-														<h:outputText value="#{c.resposta}" />
+														<h:outputText value="#{c.resposta.description}" />
 													</h:column>
 
 													<h:column>
@@ -100,6 +100,8 @@
 															action="MsgEMPREGADOR?faces-redirect=true">
 															<f:setPropertyActionListener
 																target="#{mensagemManagedBean.mensagem}" value="#{c}" />
+															<f:setPropertyActionListener
+																target="#{empregadoManagedBean.mensagem}" value="#{c}" />
 														</h:commandLink>
 
 													</h:column>

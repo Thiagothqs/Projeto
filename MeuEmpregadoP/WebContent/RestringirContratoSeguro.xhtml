@@ -69,16 +69,6 @@
 												value="#{contratoSeguroManagedBean.contrato.cpf_funcionario}" />
 										</div>
 										<div class="form-group">
-											<h:outputLabel value="Função do Funcionário:" />
-											<h:inputText disabled="true" styleClass="form-control"
-												value="#{contratoSeguroManagedBean.contrato.vaga_empregador}" />
-										</div>
-										<div class="form-group">
-											<h:outputLabel value="Empregador:" />
-											<h:inputText disabled="true" styleClass="form-control"
-												value="#{contratoSeguroManagedBean.contrato.nome_empregador}" />
-										</div>
-										<div class="form-group">
 											<h:outputLabel value="Plano de Seguro:" />
 											<h:inputText disabled="true" styleClass="form-control"
 												value="#{contratoSeguroManagedBean.contrato.nome_pacote}" />
@@ -107,7 +97,7 @@
 
 										<div id="actions" class="row">
 											<div class="col-md-12">
-												<h:commandLink styleClass="btn btn-primary" value="Restringir" 
+												<h:commandLink styleClass="btn btn-primary" value="Rescindir" 
 													action="#{contratoSeguroManagedBean.restringir}"/>
 												<h:commandLink styleClass="btn btn-default" value="Cancelar"
 													action="listaContratoSeguro?faces-redirect=true" />

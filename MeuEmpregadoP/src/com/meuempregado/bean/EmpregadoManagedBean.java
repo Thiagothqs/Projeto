@@ -9,7 +9,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.meuempregado.model.Empregado;
+import com.meuempregado.model.Mensagem;
 import com.meuempregado.service.EmpregadoService;
+import com.meuempregado.service.LoginService;
 
 @ManagedBean(name="empregadoManagedBean")
 @SessionScoped
@@ -20,11 +22,14 @@ public class EmpregadoManagedBean {
 	//Teste
 	
 	private Empregado empregado;
+	private Mensagem mensagem;
 	private List<Empregado> listEmpregado;
 	private EmpregadoService serviceempregado;
+	private LoginService login = new LoginService();
 	
 	public EmpregadoManagedBean() throws ClassNotFoundException, SQLException, IOException{
 		
+		mensagem = new Mensagem();
 		serviceempregado = new EmpregadoService();
 		empregado = new Empregado();
 		
@@ -37,6 +42,11 @@ public class EmpregadoManagedBean {
 		this.listEmpregado = serviceempregado.findEmpregadoByCidade(empregado.getCidade());
 		
 		return "indexEMPREGADOR";
+	}
+	
+	public void searchByIdAction() throws SQLException, ClassNotFoundException, IOException{
+		System.out.println("Searching...");
+		this.empregado= serviceempregado.buscarId(mensagem.getIdEmpregado());
 	}
 	
 	public String ListarTudo() throws SQLException, ClassNotFoundException, IOException{
@@ -60,5 +70,29 @@ public class EmpregadoManagedBean {
 
 	public void setListEmpregado(List<Empregado> listEmpregado) {
 		this.listEmpregado = listEmpregado;
+	}
+
+	public Mensagem getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(Mensagem mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public EmpregadoService getServiceempregado() {
+		return serviceempregado;
+	}
+
+	public void setServiceempregado(EmpregadoService serviceempregado) {
+		this.serviceempregado = serviceempregado;
+	}
+
+	public LoginService getLogin() {
+		return login;
+	}
+
+	public void setLogin(LoginService login) {
+		this.login = login;
 	}
 }

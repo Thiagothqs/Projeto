@@ -96,18 +96,10 @@
 													<h:inputText styleClass="form-control"
 														value="#{mensagemManagedBean.mensagem.data}" />
 												</div>
-												<div class="form-group">
-													<h:outputLabel value="Deseja oferecer seguro de vida?:  " />
-													<h:selectOneRadio
-														value="#{mensagemManagedBean.mensagem.ofereceSeguro}">
-														<f:selectItem itemValue="true" itemLabel="Sim" />
-														<f:selectItem itemValue="false" itemLabel="Não" />
-													</h:selectOneRadio>
-												</div>
+												
 												<div id="actions" class="row">
 													<div class="col-md-12">
 														<h:commandLink styleClass="btn btn-primary" value="Save" action="#{mensagemManagedBean.insertMensagemAction}" process="@this">
-															<f:setPropertyActionListener target="#{contratoSeguroManagedBean.mensagem}" value="#{mensagemManagedBean.mensagem}" />
 															<f:setPropertyActionListener target="#{mensagemManagedBean.empregado.id}" value="#{empregadoManagedBean.empregado.id}" />
 															<f:setPropertyActionListener target="#{mensagemManagedBean.mensagem.resposta.idResposta}" value="1" />
 														</h:commandLink>

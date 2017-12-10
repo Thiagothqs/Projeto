@@ -31,6 +31,24 @@ public class MensagemService {
 		
 		return listamensagem;//return FactoryDao.createGenericDao(Mensagem.class).listarTodos();
 	}
+	
+	public List<Mensagem> listarEmpregador(){
+		
+		List<Mensagem> list = FactoryDao.createGenericDao(Mensagem.class).listarMensagens();//dao.listAll();
+		List<Mensagem> listamensagem = new ArrayList<Mensagem>();
+		
+		for(Mensagem item: list) {
+			if(item.getIdEmpregado() == servicelogin.getIdEmpregadorlogin()) {
+				//System.out.println(item.getIdEmpregado() +"MENSAGEM SERVICE"+servicelogin.getIdEmpregadologin());//servicelogin.getIdEmpregadologin()
+				//if(item.getResposta().getDescription().equals("SIM")) {//NÃO
+					listamensagem.add(item);
+				//}
+			}
+		}
+		
+		return listamensagem;//return FactoryDao.createGenericDao(Mensagem.class).listarTodos();
+	}
+	
 	public void excluir(Mensagem m){
 		FactoryDao.createGenericDao(Mensagem.class).excluir(m.getIdMensagem());
 	}

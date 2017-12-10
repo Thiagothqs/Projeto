@@ -88,15 +88,15 @@
 												</h:column>
 												<h:column>
 													<f:facet name="header">
-														<h:outputLabel value="Empregado" />
+														<h:outputLabel value="Indenização" />
 													</f:facet>
-													<h:outputText value="#{c.nome_empregador}" />
+													<h:outputText value="#{c.IndenizaçãoReal()}" />
 												</h:column>
 												<h:column>
 													<f:facet name="header">
-														<h:outputLabel value="Função:" />
+														<h:outputLabel value="Valor da Mensalidade:" />
 													</f:facet>
-													<h:outputText value="#{c.vaga_empregador}" />
+													<h:outputText value="#{c.ValorMensalReal()}" />
 												</h:column>
 												<h:column>
 													<f:facet name="header">
@@ -109,10 +109,10 @@
 												</h:column>
 												<h:column>
 												<f:facet name="header">
-														<h:outputLabel value="Restringir" />
+														<h:outputLabel value="Rescindir" />
 													</f:facet>
 												<h:commandLink styleClass="btn btn-sm btn-danger"
-													value="Restringir" action="RestringirContratoSeguro?faces-redirect=true">
+													value="Rescindir" action="RestringirContratoSeguro?faces-redirect=true">
 													<f:setPropertyActionListener target="#{contratoSeguroManagedBean.contrato}" value="#{c}" />
 												</h:commandLink>
 											</h:column>

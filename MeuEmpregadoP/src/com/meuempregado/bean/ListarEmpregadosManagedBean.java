@@ -21,15 +21,12 @@ public class ListarEmpregadosManagedBean implements Serializable {
 	private List<Empregado> listaEmpregados;
 	
 	public ListarEmpregadosManagedBean() {
-		empregado = new Empregado();
-		empregador = new Empregador(0, "", "", "", "", "", "", "", "", "", "");
-		service = new ListarEmpregadosService();
-		//setListaEmpregados(service.listarEmpregados());
-		listaEmpregados = service.listarEmpregados();
+		atualizar();
 	}
 	
 	public String listarEmpregados() {
 		service.listarEmpregados();
+		atualizar();
 		return "index";
 	}
 
@@ -63,5 +60,11 @@ public class ListarEmpregadosManagedBean implements Serializable {
 
 	public void setListaEmpregados(List<Empregado> listaEmpregados) {
 		this.listaEmpregados = listaEmpregados;
+	}
+	public void atualizar() {
+		empregado = new Empregado();
+		empregador = new Empregador();
+		service = new ListarEmpregadosService();
+		listaEmpregados = service.listarEmpregados();
 	}
 }
